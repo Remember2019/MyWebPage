@@ -14,7 +14,7 @@ section {
     width: 100%;
     /* background-color: aquamarine; */
 
-    background: url('image.webp') no-repeat;
+    background: url('../drawable/bg2.jpg') no-repeat;
     background-position: center;
     background-size: cover;
 }
