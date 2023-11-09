@@ -3,7 +3,7 @@
 /* CSS Document */
 .menus {
     position: fixed; /* 固定菜单栏 */
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -17,7 +17,11 @@
     backdrop-filter: blur(10px);
 }
 
-.menus > a {
+.menus .logo {
+    width: 5%;
+}
+
+.menus .menu-options > a {
     display: inline-block;
     color: white;
     text-decoration: none;
@@ -45,7 +49,7 @@
 
 .banner .content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     max-width: 1000px;
     margin: 0 auto;
     text-align: center;
