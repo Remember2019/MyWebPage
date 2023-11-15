@@ -1,6 +1,10 @@
 @charset "utf-8";
 
 /* CSS Document */
+a {
+    text-decoration: none;
+}
+
 .menus {
     position: fixed; /* 固定菜单栏 */
     z-index: 2;
@@ -8,35 +12,50 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    height: 70px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: rgba(40,40,40,.6);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255,255,255,.95);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
 }
 
 .menus .logo {
-    width: 10%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .menus .logo img{
-    width: 70%;
+    width: 80%;
 }
 
 .menus .menu-options {
-    width: 75%;
+    width: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: left;
+}
+
+.menus .menu-options > a {
+    display: inline-block;
+    color: #1f2023;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "方正兰亭粗黑简体", "方正大标宋简体", serif;
+}
+
+.menu-divider {
+    width: 1px;
+    height: 70%;
+    background-color: #ccc;
 }
 
 .menus .icons {
-    width: 15%;
+    width: 35%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -46,19 +65,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "方正兰亭黑简体","微软雅黑", serif;
 }
 
 .menus .icons img{
-    width: 30%;
-    color: #fff;
-}
-
-.menus .menu-options > a {
-    display: inline-block;
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 14px;
+    width: 100%;
 }
 
 .banner {
@@ -99,10 +110,74 @@
     color: #fff;
 }
 
+.g_btn {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.g_btn:hover {
+    background-color: #000;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.g_btn:hover .button-container {
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.g_btn:hover .button-container > p {
+    color: #000;
+    transition: color 0.3s;
+}
+
+.g_btn .container {
+    display: block;
+    flex-direction: column;
+}
+
+.g_btn .container * {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.button-container {
+    background-color: #000;
+    width: 65%;
+    height: auto;
+    padding: 2px;
+    display: flex;
+    justify-content: left;
+    transition: background-color 0.3s;
+}
+
+.button-container > p {
+    font-size: 20px;
+    margin-left: 10px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.btn_content {
+    font-size: 18px;
+}
+
+.btn_title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 html {
     font-size-adjust: none;
     -webkit-text-size-adjust: none;
 }
+
 
 body {
     background: #F7F4E5 url(drawable/bg2.jpg);
@@ -112,23 +187,6 @@ body {
     margin: 0;
 }
 
-a:link {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-img {
-    border: none;
-    margin: 0;
-    padding: 0;
-}
 
 form, p, ul, dl, dt, dd, dd, em {
     margin: 0;
