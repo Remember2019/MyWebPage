@@ -17,27 +17,35 @@
 
 <body>
   <div class="menus">
-    <div class="logo">
+    <div class="logo" style="width: 15%">
       <img src="drawable/logo.png" alt="Logo">
     </div>
-    <div class="menu-options">
+    <div class="menu-options" style="width:55%;">
       <a>敦博概览</a>
       <a>参观服务</a>
       <a>数字博物馆</a>
       <a>展览公告</a>
       <a>资讯动态</a>
     </div>
-    <div class="menu-divider"></div>
-    <div class="icons">
-      <a href="/login/login.html" target="_blank">
-        <img src="drawable/person.crop.circle.svg" alt="用户">
-        <span>Remember2023</span>
-      </a>
+    <div class="menu-right" style="width: 30%; height: 100%">
+      <div class="icons" style="width: 45%">
+        <img src="drawable/heart.svg" class="icon" alt="收藏">
+        <img src="drawable/shopping-cart.svg" class="icon" alt="商城">
+        <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
+          <img src="drawable/translate.svg" alt="语言">
+        </a>
+      </div>
       <div class="menu-divider"></div>
-      <a href="javascript:void(0)" onclick="showLanguageMenu()">
-        <img src="drawable/globe.asia.australia.fill.svg" alt="语言">
-        <span>中文</span>
-      </a>
+      <div class="user-info" style="width: 55%">
+        <a href="/login/login.html" target="_blank">
+          <div class="user-info-icon" style="border-radius: 100%; overflow: hidden">
+            <img src="drawable/user-head.webp" alt="用户" style="width: auto; height: 100%;">
+          </div>
+          <div class="user-info-text" style="margin-left: 15px">
+            <p>Remember2023</p>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
   <div class="banner">
@@ -485,7 +493,6 @@
       </div>
     </div>
   </footer>
-
 </body>
 
 </html>
