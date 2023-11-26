@@ -1,6 +1,17 @@
+const data = {
+    "messages":[],
+    "stream":false,
+    "model":"gpt-3.5-turbo-16k",
+    "temperature":0.5,
+    "presence_penalty":0,
+    "frequency_penalty":0,
+    "top_p":1
+}
+
 function showLanguageMenu() {
     alert('选择语言');
 }
+
 function sendPostRequest(data, callback) {
     fetch("https://chatai.dingsm.top/api/openai/v1/chat/completions", {
         method: "POST",
@@ -24,27 +35,43 @@ function sendPostRequest(data, callback) {
 }
 
 function submit(){
-    var inputElement = document.getElementById("myInput");
-    var inputValue = inputElement.value;
+    const inputElement = document.getElementById("myInput");
+    const inputValue = inputElement.value;
+    const chatDisplay = document.querySelector('.chat-display');
+    const newMessage = document.createElement('div');
+    const content = document.createElement('div');
 
-    var data = {
-        "messages":[
-            {"role":"user","content":inputValue},
-        ],
-        "stream":false,
-        "model":"gpt-3.5-turbo-16k",
-        "temperature":0.5,
-        "presence_penalty":0,
-        "frequency_penalty":0,
-        "top_p":1
+    if (data.messages.length >= 40) {
+        alert('开发者要求不得超过20条问题，现在已经清除对话，请重新开始！');
+        console.log('开发者要求不得超过20条问题，现在已经清除对话，请重新开始！')
+        inputElement.value = '';
+        data.messages.splice(0,data.messages.length);
+        chatDisplay.innerHTML = '';
+        return;
     }
+    newMessage.classList.add('new_message');
+    newMessage.style.alignSelf = 'flex-end';
+    content.classList.add('content');
+    content.classList.add('right-chat');
+    content.innerHTML = inputValue;
+    chatDisplay.appendChild(newMessage);
+    newMessage.appendChild(content);
+    data.messages.push({"role":"user","content":inputValue})
 
     function handleResponse(response) {
-        var responseText = response.choices[0].message.content; // 将响应转换为字符串
-        var outputElement = document.getElementById("myOutput");
-        outputElement.textContent = responseText; // 将响应文本设置为文本控件的值
-        console.log(response.choices[0].message.content);
+        const responseText = response.choices[0].message.content; // 将响应转换为字符串
+        const replyMessage = document.createElement('div');
+        const replyContent = document.createElement('div');
+        replyMessage.classList.add('new_message');
+        replyContent.classList.add('content');
+        replyContent.classList.add('left-chat');
+        replyContent.innerHTML = responseText;
+        chatDisplay.appendChild(replyMessage);
+        replyMessage.appendChild(replyContent);
+        data.messages.push({"role":"assistant","content":responseText})
+        console.log(responseText);
         // 在这里处理响应数据
     }
     sendPostRequest(data, handleResponse);
+    inputElement.value = '';
 }
