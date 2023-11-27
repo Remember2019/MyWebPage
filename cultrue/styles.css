@@ -236,31 +236,28 @@ body {
 }
 
 .works {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
     margin-top: 50px;
     width: 100%;
-    height: fit-content;
+    height: 400px;
 }
 
 .works .switch_cards {
-    margin-top: 32px;
-    width: 100%;
-    height: 258px;
-    padding-left: 120px;
-    overflow-x: auto;
-    white-space: nowrap;
     display: inline-flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
+    width: 80%;
+    height: 100%;
 }
 
 .works .switch_cards .card {
     margin-left: 12px;
     margin-right: 12px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.switch_cards .card image {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .works .title {
