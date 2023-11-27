@@ -12,6 +12,16 @@ function showLanguageMenu() {
     alert('选择语言');
 }
 
+function showChatUI() {
+    let window_bg = document.getElementsByClassName("chat-bg")[0]
+    window_bg.style.display = "block";
+}
+
+function dismissChatUI() {
+    let window_bg = document.getElementsByClassName("chat-bg")[0]
+    window_bg.style.display = "none";
+}
+
 function sendPostRequest(data, callback) {
     fetch("https://chatai.dingsm.top/api/openai/v1/chat/completions", {
         method: "POST",

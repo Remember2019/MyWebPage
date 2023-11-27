@@ -54,14 +54,6 @@
       <source src="drawable/preview.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="chat-container">
-    <div class="chat-display">
-    </div>
-    <div class="chat-input">
-      <input type="text" id="myInput" placeholder="询问ChatGPT">
-      <button id="submit-btn" onclick="submit()">发送</button>
-    </div>
-  </div>
 
   <div class="works">
     <div class="title">
@@ -98,6 +90,27 @@
       <p class="title">乐舞敦煌</p>
     </div>
   </footer>
+  <button id="chatButton" onclick="showChatUI()">
+    <img src="drawable/sparkles.svg" alt="chat" style="width: 30px"/>
+  </button>
 </body>
 
+<div class="chat-bg">
+  <div class="chat-window">
+    <div class="chat-container">
+      <div class="chat-title">
+        <p>ChatGPT</p>
+        <button id="closeButton" onclick="dismissChatUI()">
+          <img src="drawable/light-bulb.svg" alt="close" style="width: 1px"/>
+        </button>
+      </div>
+      <div class="chat-display">
+      </div>
+      <div class="chat-input">
+        <input type="text" id="myInput" placeholder="询问ChatGPT">
+        <button id="submit-btn" onclick="submit()">发送</button>
+      </div>
+    </div>
+  </div>
+</div>
 </html>
