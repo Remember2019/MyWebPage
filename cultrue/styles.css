@@ -1,5 +1,23 @@
 @charset "utf-8";
 
+html {
+    font-size-adjust: none;
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    background: #F7F4E5 url(drawable/bg2.jpg);
+    color: #444;
+    font-family: "Helvetica Neue", Arial, 微软雅黑, 宋体, serif;
+    font-size: 15px;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
 @font-face {
     font-family: '方正大标宋简体';
     src: url(fonts/FZDBSJW.ttf);
@@ -15,12 +33,43 @@
     src: url(fonts/FZLTHJW.ttf);
 }
 
-a {
-    text-decoration: none;
-}
-
-@media only screen and (max-width: 1024px) {
-
+@media only screen and (max-width: 767px) {
+    .menus {
+        padding: 1rem;
+    }
+    .menus .sidebar-toggle {
+        position: fixed;
+        display: block !important;
+        right: 40px;
+    }
+    .menu-options {
+        position: fixed;
+        left: -100%;
+        flex-direction: column;
+    }
+    .user-info {
+        position: fixed;
+        width: 50px;
+    }
+    .user-info-text {
+        position: fixed;
+        right: 100%;
+    }
+    .menu-divider {
+        display: none;
+    }
+    .menus .logo {
+        position: fixed;
+        left: 30px;
+    }
+    .menu-right {
+        position: fixed;
+        right: -100px;
+    }
+    .menu-right .icons {
+        position: fixed;
+        right: 100%;
+    }
 }
 
 .menus {
@@ -37,6 +86,7 @@ a {
     background-color: rgba(255,255,255,.8);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+    transition: .4s;
 }
 
 .menus .logo {
@@ -53,15 +103,20 @@ a {
     display: flex;
     align-items: center;
     justify-content: left;
+    padding-left: 0;
 }
 
-.menus .menu-options > a {
-    display: inline-block;
-    color: #1f2023;
-    text-decoration: none;
+.menus .menu-options > li {
+    list-style: none;
     padding: 10px;
     font-size: 20px;
     font-family: "方正兰亭粗黑简体", "方正大标宋简体", serif;
+}
+
+.menus .menu-options > li > a {
+    display: inline-block;
+    text-decoration: none;
+    color: #1f2023;
 }
 
 .menu-divider {
@@ -74,6 +129,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 452px;
+    height: 100%;
 }
 
 .menu-right .icons {
@@ -117,6 +174,23 @@ a {
     flex-direction: row;
     font-family: "方正兰亭粗黑简体", "微软雅黑", serif;
     font-size: 16px;
+}
+
+.menus .sidebar-toggle {
+    display: none;
+    /*
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 100%;
+    right: -100%;*/
+}
+
+.menus .sidebar-toggle img {
+    width: 28px;
+    cursor: pointer;
 }
 
 .banner {
@@ -219,20 +293,6 @@ a {
 .btn_title {
     font-size: 30px;
     font-weight: bold;
-}
-
-html {
-    font-size-adjust: none;
-    -webkit-text-size-adjust: none;
-}
-
-
-body {
-    background: #F7F4E5 url(drawable/bg2.jpg);
-    color: #444;
-	font-family: "Helvetica Neue", Arial, 微软雅黑, 宋体, serif;
-    font-size: 15px;
-    margin: 0;
 }
 
 .works {
@@ -352,6 +412,7 @@ footer .title {
     height: 100%;
     align-items: center;
     justify-content: center;
+    transition: .4s;
 }
 
 .chat-container {

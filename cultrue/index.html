@@ -5,44 +5,51 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="renderer" content="webkit|ie-comp|ie-stand">
   <meta name="author" content="www.dingsm.top, Dimsoft有限公司">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
+  <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>-->
   <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
   <div class="menus">
-    <div class="logo" style="width: 15%">
+    <div class="logo" style="width: 230px">
       <img src="drawable/logo.png" alt="Logo">
     </div>
-    <div class="menu-options" style="width:55%;">
-      <a>臻赏</a>
-      <a>研究</a>
-      <a>典藏</a>
-      <a>文创</a>
-      <a>游览</a>
-    </div>
-    <div class="menu-right" style="width: 30%; height: 100%">
-      <div class="icons" style="width: 45%">
-        <img src="drawable/heart.svg" class="icon" alt="收藏">
-        <img src="drawable/shopping-cart.svg" class="icon" alt="商城">
-        <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
-          <img src="drawable/translate.svg" alt="语言">
-        </a>
-      </div>
-      <div class="menu-divider"></div>
-      <div class="user-info" style="width: 55%">
-        <a href="./login/login.html" target="_blank">
-          <div class="user-info-icon" style="border-radius: 100%; overflow: hidden">
-            <img src="drawable/user-head.webp" alt="用户" style="width: auto; height: 100%;">
+    <ul class="menu-options" style="width:55%;">
+        <li><a href="#">臻赏</a></li>
+        <li><a href="#">研究</a></li>
+        <li><a href="#">典藏</a></li>
+        <li><a href="#">文创</a></li>
+        <li><a href="#">游览</a></li>
+    </ul>
+    <div class="menu-right">
+          <div class="icons" style="width: 45%">
+              <img src="drawable/heart.svg" class="icon" alt="收藏">
+              <img src="drawable/shopping-cart.svg" class="icon" alt="商城">
+              <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
+                  <img src="drawable/translate.svg" alt="语言">
+              </a>
           </div>
-          <div class="user-info-text" style="margin-left: 15px">
-            <p>Remember2023</p>
+          <div class="menu-divider"></div>
+          <div class="user-info" style="width: 55%">
+              <a href="./login/login.html" target="_blank">
+                  <div class="user-info-icon" style="border-radius: 100%; overflow: hidden">
+                      <img src="drawable/user-head.webp" alt="用户" style="width: auto; height: 100%;">
+                  </div>
+                  <div class="user-info-text" style="margin-left: 15px">
+                      <p>Remember2023</p>
+                  </div>
+              </a>
           </div>
-        </a>
       </div>
+    <div class="sidebar-toggle">
+      <a onclick="showChatUI()"><img src="drawable/menu.svg" alt=""></a>
     </div>
   </div>
   <div class="banner">
