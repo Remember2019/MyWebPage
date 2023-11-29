@@ -43,9 +43,14 @@ a {
         right: 40px;
     }
     .menu-options {
+        background-color: rgba(255,255,255,.8);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
         position: fixed;
-        left: -100%;
+        width: 100px;
+        left: 100px;
         flex-direction: column;
+        top: 6rem;
     }
     .user-info {
         position: fixed;
