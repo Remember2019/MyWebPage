@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    background: #F7F4E5 url(drawable/bg2.jpg);
+    background: #F7F4E5 url(../drawable/bg2.jpg);
     color: #444;
     font-family: "Helvetica Neue", Arial, 微软雅黑, 宋体, serif;
     font-size: 15px;
@@ -42,15 +42,22 @@ a {
         display: block !important;
         right: 40px;
     }
-    .menu-options {
+    .menu-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 1;
+        height: 100%;
+        width: 200px !important;
+        transition: .4s;
         background-color: rgba(255,255,255,.8);
         -webkit-backdrop-filter: blur(20px);
         backdrop-filter: blur(20px);
-        position: fixed;
-        width: 100px;
+    }
+    .menu-options {
         left: 100px;
         flex-direction: column;
-        top: 6rem;
+        top: 0;
     }
     .user-info {
         position: fixed;
@@ -75,6 +82,19 @@ a {
         position: fixed;
         right: 100%;
     }
+    #close_sidebar_btn {
+        display: block !important;
+    }
+}
+
+.show-menu {
+    right: 0;
+}
+
+#close_sidebar_btn {
+    display: none;
+    width: 24px;
+    height: 24px;
 }
 
 .menus {

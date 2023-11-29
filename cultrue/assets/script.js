@@ -12,6 +12,14 @@ function showLanguageMenu() {
     alert('选择语言');
 }
 
+function showSidebar() {
+    document.getElementById('sidebar').className += ' show-menu'
+}
+
+function hideSidebar() {
+    document.getElementById('sidebar').className = 'menu-nav'
+}
+
 function showChatUI() {
     let window_bg = document.getElementsByClassName("chat-bg")[0]
     window_bg.style.display = "block";

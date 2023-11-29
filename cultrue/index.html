@@ -1,130 +1,136 @@
 <html lang="zh-CN">
 <head>
-  <title>乐舞敦煌</title>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="renderer" content="webkit|ie-comp|ie-stand">
-  <meta name="author" content="www.dingsm.top, Dimsoft有限公司">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="assets/styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css" />
-  <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/element-plus"></script>
-  <script type="text/javascript" src="assets/script.js"></script>
+    <title>乐舞敦煌</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="author" content="www.dingsm.top, Dimsoft有限公司">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css"/>
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/element-plus"></script>
+    <script src="assets/script.js"></script>
+    <script src="assets/vue.js"></script>
 </head>
 
 <body>
-  <div class="menus">
+<div class="menus">
     <div class="logo" style="width: 230px">
-      <img src="drawable/logo.png" alt="Logo">
+        <img src="drawable/logo.png" alt="Logo">
     </div>
-    <ul class="menu-options" style="width:55%;">
-        <li><a href="#">臻赏</a></li>
-        <li><a href="#">研究</a></li>
-        <li><a href="#">典藏</a></li>
-        <li><a href="#">文创</a></li>
-        <li><a href="#">游览</a></li>
-    </ul>
+    <div id="sidebar" class="menu-nav" style="width:55%;">
+        <i id="close_sidebar_btn" onclick="hideSidebar()" style="cursor: pointer">
+            <img src="drawable/close.svg" alt="close">
+        </i>
+        <ul class="menu-options" style="width:100%;">
+            <li><a href="#">臻赏</a></li>
+            <li><a href="#">研究</a></li>
+            <li><a href="#">典藏</a></li>
+            <li><a href="#">文创</a></li>
+            <li><a href="#">游览</a></li>
+        </ul>
+    </div>
     <div class="menu-right">
-          <div class="icons" style="width: 45%">
-              <img src="drawable/heart.svg" class="icon" alt="收藏">
-              <img src="drawable/shopping-cart.svg" class="icon" alt="商城">
-              <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
-                  <img src="drawable/translate.svg" alt="语言">
-              </a>
-          </div>
-          <div class="menu-divider"></div>
-          <div class="user-info" style="width: 55%">
-              <a href="./login/login.html" target="_blank">
-                  <div class="user-info-icon" style="border-radius: 100%; overflow: hidden">
-                      <img src="drawable/user-head.webp" alt="用户" style="width: auto; height: 100%;">
-                  </div>
-                  <div class="user-info-text" style="margin-left: 15px">
-                      <p>Remember2023</p>
-                  </div>
-              </a>
-          </div>
-      </div>
-    <div class="sidebar-toggle">
-      <a onclick="showChatUI()"><img src="drawable/menu.svg" alt=""></a>
+        <div class="icons" style="width: 45%">
+            <img src="drawable/heart.svg" class="icon" alt="收藏">
+            <img src="drawable/shopping-cart.svg" class="icon" alt="商城">
+            <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
+                <img src="drawable/translate.svg" alt="语言">
+            </a>
+        </div>
+        <div class="menu-divider"></div>
+        <div class="user-info" style="width: 55%">
+            <a href="./login/login.html" target="_blank">
+                <div class="user-info-icon" style="border-radius: 100%; overflow: hidden">
+                    <img src="drawable/user-head.webp" alt="用户" style="width: auto; height: 100%;">
+                </div>
+                <div class="user-info-text" style="margin-left: 15px">
+                    <p>Remember2023</p>
+                </div>
+            </a>
+        </div>
     </div>
-  </div>
-  <div class="banner">
+    <div class="sidebar-toggle">
+        <a onclick="showSidebar()"><img src="drawable/menu.svg" alt=""></a>
+    </div>
+</div>
+<div class="banner">
     <div class="content">
-      <h1>走近敦煌</h1>
-      <p>Let me tell you what is that.</p>
+        <h1>走近敦煌</h1>
+        <p>Let me tell you what is that.</p>
     </div>
     <video autoplay muted loop>
-      <source src="drawable/preview.mp4" type="video/mp4">
+        <source src="drawable/preview.mp4" type="video/mp4">
     </video>
-  </div>
+</div>
 
-  <template>
-      <el-button type="warning">
-          Warning
-      </el-button>
-  </template>
-  <div class="works">
+<div class="works">
     <div class="title">
-      <p style="font-size: 32px; font-weight: 700; line-height: 100%; color: black;">敦煌文化</p>
-      <div class="menu-divider"></div>
-      <p>Dunhuang Culture</p>
+        <p style="font-size: 32px; font-weight: 700; line-height: 100%; color: black;">敦煌文化</p>
+        <div class="menu-divider"></div>
+        <p>Dunhuang Culture</p>
     </div>
     <div class="switch_cards">
-      <div class="card">
-        <img src="drawable/back_img.webp">
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="container" style="height: 288px; position: relative;">
-      <div class="foot-icons">
-        <img style="width: 24px; height: 24px; border-radius: 8px;" src="drawable/logo.svg" alt="bilibili"/>
-      </div>
-      <div class="foot-menus">
-        <div style="display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;">
-          <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">Seslendirme ve Alt Jazz</p>
-          <div style="height: 15px;"></div>
-          <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">Media Market</p>
-          <div style="height: 15px;"></div>
-          <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">Gillie</p>
-          <div style="height: 15px;"></div>
-          <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">Size Last</p>
+        <div class="card">
+            <img src="drawable/back_img.webp">
         </div>
-      </div>
-      <div class="foot-button">
-        <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">3组荣誉出品</p>
-      </div>
-      <p class="information">© 2018-2023 DimSoft Inc.</p>
-      <p class="title">乐舞敦煌</p>
     </div>
-  </footer>
-  <button id="chatButton" onclick="showChatUI()">
+</div>
+<footer>
+    <div class="container" style="height: 288px; position: relative;">
+        <div class="foot-icons">
+            <img style="width: 24px; height: 24px; border-radius: 8px;" src="drawable/logo.svg" alt="bilibili"/>
+        </div>
+        <div class="foot-menus">
+            <div style="display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;">
+                <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">Seslendirme ve Alt
+                    Jazz</p>
+                <div style="height: 15px;"></div>
+                <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">Media Market</p>
+                <div style="height: 15px;"></div>
+                <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">Gillie</p>
+                <div style="height: 15px;"></div>
+                <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">Size Last</p>
+            </div>
+        </div>
+        <div class="foot-button">
+            <p style="font-size: 13px; line-height: 100%; color: rgba(128, 128, 128, 1);">3组荣誉出品</p>
+        </div>
+        <p class="information">© 2018-2023 DimSoft Inc.</p>
+        <p class="title">乐舞敦煌</p>
+    </div>
+</footer>
+<button id="chatButton" onclick="showChatUI()">
     <img src="drawable/sparkles.svg" alt="chat" style="width: 30px"/>
-  </button>
+</button>
 </body>
 
 <div class="chat-bg">
-  <div class="chat-window">
-    <div class="chat-container">
-      <div class="chat-title">
-        <p>ChatGPT</p>
-        <button id="closeButton" onclick="dismissChatUI()">
-          <img src="drawable/light-bulb.svg" alt="close" style="width: 1px"/>
-        </button>
-      </div>
-      <div class="chat-display">
-      </div>
-      <div class="chat-input">
-        <input type="text" id="myInput" placeholder="询问ChatGPT">
-        <button id="submit-btn" onclick="submit()">发送</button>
-      </div>
+    <div class="chat-window">
+        <div class="chat-container">
+            <div class="chat-title">
+                <p>ChatGPT</p>
+                <button id="closeButton" onclick="dismissChatUI()">
+                    <img src="drawable/light-bulb.svg" alt="close" style="width: 1px"/>
+                </button>
+            </div>
+            <div class="chat-display">
+            </div>
+            <div class="chat-input">
+                <input type="text" id="myInput" placeholder="询问ChatGPT">
+                <button id="submit-btn" onclick="submit()">发送</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 </html>
+
+<script>
+    //Vue.createApp(app).mount('#app');
+</script>
