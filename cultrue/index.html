@@ -26,7 +26,7 @@
     </div>
     <div id="sidebar" class="menu-nav" style="width:55%;">
         <i id="close_sidebar_btn" onclick="hideSidebar()" style="cursor: pointer">
-            <img src="drawable/close.svg" alt="close">
+            <img src="drawable/close.svg" alt="close" style="margin:10px;">
         </i>
         <ul class="menu-options" style="width:100%;">
             <li><a href="#">臻赏</a></li>
@@ -69,7 +69,11 @@
         <source src="drawable/preview.mp4" type="video/mp4">
     </video>
 </div>
-
+<div id="app">
+    <template>
+        <el-button>我是 ElButton</el-button>
+    </template>
+</div>
 <div class="works">
     <div class="title">
         <p style="font-size: 32px; font-weight: 700; line-height: 100%; color: black;">敦煌文化</p>
@@ -132,5 +136,5 @@
 </html>
 
 <script>
-    //Vue.createApp(app).mount('#app');
+    Vue.createApp(app).mount('#app');
 </script>
