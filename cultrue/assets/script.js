@@ -1,8 +1,3 @@
-const cors = require("cors")
-const express = require('express')
-const app = express();
-app.use(cors())
-
 const data = {
     "messages":[],
     "stream":false,
