@@ -14,7 +14,7 @@ const data = {
 }
 
 function getRes() {
-    fetch('http://www.sdsddk.sdnu.edu.cn/wxapp/pay/queryElectricity?userXq=千佛山校区&userFj=502043&payType=2')
+    fetch('http://localhost:8080/api?userXq=千佛山校区&userFj=502043&payType=2')
         .then(res => res.json())
         .then(result => console.log(result))
 }
