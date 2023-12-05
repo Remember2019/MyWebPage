@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api/.*",
+      "dest": "http://localhost:8080/api/:splat",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/\$1"
+    }
+  ]
+}
