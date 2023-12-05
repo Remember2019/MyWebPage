@@ -17,7 +17,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/element-plus"></script>
     <script src="assets/script.js"></script>
-    <script src="assets/vue.js"></script>
+    <script src="assets/vue.ts"></script>
 </head>
 
 <body>
@@ -70,11 +70,63 @@
         <source src="drawable/preview.mp4" type="video/mp4">
     </video>
 </div>
-<div id="app">
-    <template>
-        <el-button>我是 ElButton</el-button>
-    </template>
+<button onclick="getRes()">111</button>
+<div id="card_app" class="switch_cards">
+    <el-button plain @click="open1"> Success</el-button>
+    <el-button plain @click="open2"> Warning</el-button>
+    <el-button plain @click="open3"> Info</el-button>
+    <el-button plain @click="open4"> Error</el-button>
 </div>
+<script>
+    const {ElNotification} = ElementPlus;
+    const App = {
+        setup() {
+            const open1 = () => {
+                ElNotification({
+                    title: 'Success',
+                    message: 'This is a success message',
+                    type: 'success',
+                })
+            }
+            const open2 = () => {
+                ElNotification({
+                    title: 'Warning',
+                    message: 'This is a warning message',
+                    type: 'warning',
+                })
+            }
+            const open3 = () => {
+                ElNotification({
+                    title: 'Info',
+                    message: 'This is an info message',
+                    type: 'info',
+                })
+            }
+            const open4 = () => {
+                ElNotification({
+                    title: 'Error',
+                    message: 'This is an error message',
+                    type: 'error',
+                })
+            }
+            return {
+                open1,
+                open2,
+                open3,
+                open4,
+            }
+        },
+        data() {
+            return {
+                message: "Hello Element Plus",
+            };
+        },
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#card_app");
+</script>
+
 <div class="works">
     <div class="title">
         <p style="font-size: 32px; font-weight: 700; line-height: 100%; color: black;">敦煌文化</p>
@@ -83,7 +135,7 @@
     </div>
     <div class="switch_cards">
         <div class="card">
-            <img src="drawable/back_img.webp">
+            <img src="drawable/back_img.webp" alt="">
         </div>
     </div>
 </div>
@@ -115,7 +167,6 @@
     <img src="drawable/sparkles.svg" alt="chat" style="width: 30px"/>
 </button>
 </body>
-
 <div class="chat-bg">
     <div class="chat-window">
         <div class="chat-container">
@@ -135,7 +186,3 @@
     </div>
 </div>
 </html>
-
-<script>
-    Vue.createApp(app).mount('#app');
-</script>

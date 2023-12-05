@@ -1,3 +1,8 @@
+const cors = require("cors")
+const express = require('express')
+const app = express();
+app.use(cors())
+
 const data = {
     "messages":[],
     "stream":false,
@@ -6,6 +11,12 @@ const data = {
     "presence_penalty":0,
     "frequency_penalty":0,
     "top_p":1
+}
+
+function getRes() {
+    fetch('http://www.sdsddk.sdnu.edu.cn/wxapp/pay/queryElectricity?userXq=千佛山校区&userFj=502043&payType=2')
+        .then(res => res.json())
+        .then(result => console.log(result))
 }
 
 function showLanguageMenu() {
