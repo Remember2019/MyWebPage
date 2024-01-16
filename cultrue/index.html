@@ -10,29 +10,32 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css"/>
-    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://unpkg.com/element-plus"></script>
+    <!-- 引入 Element Plus 暗黑主题 -->
+    <link rel="stylesheet" href="src/element-plus/index.css"/>
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/dark/css-vars.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/index.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/display.css">
+    <!-- 引入 Element Plus 和 Vue 3 -->
+    <script src="src/vue@3/vue.global.js"></script>
+    <script src="src/element-plus/index.full.js"></script>
+    <script src="src/@element-plus/icons-vue/index.iife.min.js"></script>
     <script src="assets/script.js"></script>
-    <script src="assets/vue.ts"></script>
 </head>
 
 <body>
+<div id="app">
 <div class="menus">
     <div class="logo" style="width: 230px">
         <img src="drawable/logo.png" alt="Logo">
     </div>
     <div id="sidebar" class="menu-nav" style="width:55%;">
         <i id="close_sidebar_btn" onclick="hideSidebar()" style="cursor: pointer">
-            <img src="drawable/close.svg" alt="close" style="margin:10px;">
+            <el-icon :size="20" style="margin: 10px;"><Close /></el-icon>
         </i>
         <ul class="menu-options" style="width:100%;">
-            <li><a href="#">臻赏</a></li>
-            <li><a href="#">研究</a></li>
-            <li><a href="#">典藏</a></li>
+            <li><a href="#" onclick="errorTip('111')">臻赏</a></li>
+            <li><a href="#" onclick="warnTip('222')">研究</a></li>
+            <li><a href="#" onclick="successTip('333')">典藏</a></li>
             <li><a href="#">文创</a></li>
             <li><a href="#">游览</a></li>
         </ul>
@@ -42,7 +45,13 @@
             <img src="drawable/heart.svg" class="icon" alt="收藏">
             <img src="drawable/shopping-cart.svg" class="icon" alt="商城">
             <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
-                <img src="drawable/translate.svg" alt="语言">
+                <svg preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24" width="1.2em" height="1.2em"
+                     data-v-12008bb2="">
+                     <path fill="currentColor"
+                          d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z">
+                    </path>
+                </svg>
             </a>
         </div>
         <div class="menu-divider"></div>
@@ -57,8 +66,10 @@
             </a>
         </div>
     </div>
-    <div class="sidebar-toggle">
-        <a onclick="showSidebar()"><img src="drawable/menu.svg" alt=""></a>
+    <div class="sidebar-toggle" style="cursor: pointer">
+        <a onclick="showSidebar()">
+            <el-icon :size="20"><menu /></el-icon>
+        </a>
     </div>
 </div>
 <div class="banner">
@@ -70,62 +81,24 @@
         <source src="drawable/preview.mp4" type="video/mp4">
     </video>
 </div>
-<button onclick="getRes()">111</button>
-<div id="card_app" class="switch_cards">
-    <el-button plain @click="open1"> Success</el-button>
-    <el-button plain @click="open2"> Warning</el-button>
-    <el-button plain @click="open3"> Info</el-button>
-    <el-button plain @click="open4"> Error</el-button>
+
+<div id="chat-dialog">
+    <el-dialog v-model="visible" title="ChatGPT" modal-class="chat-bg"
+               style="border-radius: 10px">
+            <div class="my-content">
+                <div class="chat-display">
+                    <el-skeleton :rows="5" animated />
+                </div>
+                <div class="chat-input">
+                    <el-input v-model="input" id="myInput" placeholder="询问ChatGPT" @keyup.enter="submit_message">
+                        <template #append>
+                            <el-button id="submit-btn" type="primary" @click="submit_message">发送</el-button>
+                        </template>
+                    </el-input>
+                </div>
+            </div>
+    </el-dialog>
 </div>
-<script>
-    const {ElNotification} = ElementPlus;
-    const App = {
-        setup() {
-            const open1 = () => {
-                ElNotification({
-                    title: 'Success',
-                    message: 'This is a success message',
-                    type: 'success',
-                })
-            }
-            const open2 = () => {
-                ElNotification({
-                    title: 'Warning',
-                    message: 'This is a warning message',
-                    type: 'warning',
-                })
-            }
-            const open3 = () => {
-                ElNotification({
-                    title: 'Info',
-                    message: 'This is an info message',
-                    type: 'info',
-                })
-            }
-            const open4 = () => {
-                ElNotification({
-                    title: 'Error',
-                    message: 'This is an error message',
-                    type: 'error',
-                })
-            }
-            return {
-                open1,
-                open2,
-                open3,
-                open4,
-            }
-        },
-        data() {
-            return {
-                message: "Hello Element Plus",
-            };
-        },
-    };
-    const app = Vue.createApp(App);
-    app.use(ElementPlus);
-    app.mount("#card_app");
-</script>
 
 <div class="works">
     <div class="title">
@@ -134,11 +107,18 @@
         <p>Dunhuang Culture</p>
     </div>
     <div class="switch_cards">
-        <div class="card">
-            <img src="drawable/back_img.webp" alt="">
-        </div>
+        <el-carousel :interval="4000" type="card" height="200px">
+            <el-carousel-item v-for="item in 6" :key="item">
+                <h3 text="2xl" justify="center">{{ item }}</h3>
+            </el-carousel-item>
+        </el-carousel>
+
     </div>
 </div>
+
+<button id="chatButton" onclick="visible.value = true">
+    <img src="drawable/sparkles.svg" alt="chat" style="width: 30px"/>
+</button>
 <footer>
     <div class="container" style="height: 288px; position: relative;">
         <div class="foot-icons">
@@ -163,26 +143,54 @@
         <p class="title">乐舞敦煌</p>
     </div>
 </footer>
-<button id="chatButton" onclick="showChatUI()">
-    <img src="drawable/sparkles.svg" alt="chat" style="width: 30px"/>
-</button>
-</body>
-<div class="chat-bg">
-    <div class="chat-window">
-        <div class="chat-container">
-            <div class="chat-title">
-                <p>ChatGPT</p>
-                <button id="closeButton" onclick="dismissChatUI()">
-                    <img src="drawable/light-bulb.svg" alt="close" style="width: 1px"/>
-                </button>
-            </div>
-            <div class="chat-display">
-            </div>
-            <div class="chat-input">
-                <input type="text" id="myInput" placeholder="询问ChatGPT">
-                <button id="submit-btn" onclick="submit()">发送</button>
-            </div>
-        </div>
-    </div>
 </div>
+
+<script>
+    const {ref} = Vue;
+    const { ElInput, ElMessage, ElCarousel, ElSkeleton } = ElementPlus;
+    const { CircleCloseFilled, Close, Menu } = ElementPlusIconsVue;
+    const errorTip = (content) => {
+        ElMessage.error(content)
+    }
+    const warnTip = (content) => {
+        ElMessage({
+            message: content,
+            type: 'warning',
+        })
+    }
+    const successTip = (content) => {
+        ElMessage({
+            message: content,
+            type: 'success',
+        })
+    }
+
+    const App = {
+        setup() {
+            const visible = ref(false)
+            const input = ref('')
+            window.visible = visible
+            window.errorTip = errorTip
+            window.warnTip = warnTip
+            window.successTip = successTip
+            return {
+                visible,
+                input,
+                errorTip,
+                warnTip,
+                successTip,
+            }
+        },
+        components: { CircleCloseFilled, Close, Menu, ElSkeleton },
+        methods: {
+            submit_message() {
+                submit();
+            }
+        }
+    }
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
+</body>
 </html>

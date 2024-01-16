@@ -8,7 +8,7 @@ html {
 body {
     background: #F7F4E5 url(../drawable/bg2.jpg);
     color: #444;
-    font-family: "Helvetica Neue", Arial, 微软雅黑, 宋体, serif;
+    font-family: "Helvetica Neue", Arial, "PingFang SC", 宋体, serif;
     font-size: 15px;
     margin: 0;
     overflow-x: hidden;
@@ -33,7 +33,7 @@ a {
     src: url(fonts/FZLTHJW.ttf);
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 780px) {
     .menus {
         padding: 1rem;
     }
@@ -50,8 +50,8 @@ a {
         /*height: 100%;*/
         width: 250px !important;
         transition: .4s;
-        box-shadow: -1px 0 80px 1px rgba(0,0,0,.3);
-        background-color: rgba(255,255,255,1);
+        box-shadow: -1px 0 80px 1px var(--el-text-color-regular);
+        background-color: var(--el-bg-color-overlay);
     }
     .menu-options {
         left: 100px;
@@ -92,6 +92,18 @@ a {
         display: block !important;
         margin: 20px 10px 10px;
     }
+    .el-dialog {
+        width: 100% !important;
+        height: 85vh !important;
+        border-radius: 10px 10px 0 0 !important;
+        transition: .4s;
+    }
+    .el-overlay-dialog {
+        overflow: hidden !important;
+    }
+    .chat-display {
+        height: 75% !important;
+    }
 }
 
 .show-menu {
@@ -115,7 +127,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: rgba(255,255,255,.8);
+    background-color: var(--el-bg-color-overlay);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     transition: .4s;
@@ -148,7 +160,7 @@ a {
 .menus .menu-options > li > a {
     display: inline-block;
     text-decoration: none;
-    color: #1f2023;
+    color: var(--el-text-color-primary);
 }
 
 .menus .menu-options > li:after {
@@ -156,14 +168,14 @@ a {
     width: 0;
     bottom: 0;
     display: block;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid var(--el-text-color-primary);
     transition: width .5s;
 }
 
 .menus .menu-options > li:hover:after {
     content: '';
     display: block;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid var(--el-text-color-primary) ;
     width: 100%;
     transition: width .5s;
 }
@@ -369,10 +381,7 @@ a {
 }
 
 .works .switch_cards {
-    display: inline-flex;
-    flex-direction: row;
-    width: 80%;
-    height: 100%;
+    padding: 20px;
 }
 
 .works .switch_cards .card {
@@ -393,6 +402,21 @@ a {
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
+}
+.el-carousel__item h3 {
+    color: #475669;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+    text-align: center;
+}
+
+.el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+    background-color: #d3dce6;
 }
 
 footer {
@@ -460,7 +484,6 @@ footer .title {
 }
 
 .chat-bg {
-    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -470,16 +493,6 @@ footer .title {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     background-color: rgba(0,0,0,0.5);
-    transition: opacity .5s ease-in-out;
-}
-
-.chat-window {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    transition: .4s;
 }
 
 .chat-container {
@@ -510,7 +523,6 @@ footer .title {
 
 .chat-display {
     padding: 10px;
-    background-color: #f9f9f9;
     height: 300px;
     overflow: auto;
     display: flex;
@@ -536,33 +548,19 @@ footer .title {
     width: fit-content;
     color: darkslategray;
     padding: 10px;
-    border: none;
     white-space: pre-line;
     border-radius: 5px;
+    border: 1px solid var(--el-border-color-light);
 }
 
 .chat-input {
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #f5f5f5;
 }
 
-.chat-input input {
-    flex-grow: 1;
-    margin-right: 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.chat-input button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #428bca;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+.el-dialog {
+    transition: .4s;
 }
 
 #chatButton {

@@ -13,5 +13,6 @@
     <orderEntry type="library" name="jquery-1.11.3" level="application" />
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="library" name="element-plus" level="application" />
+    <orderEntry type="library" name="@element-plus" level="application" />
   </component>
 </module>
