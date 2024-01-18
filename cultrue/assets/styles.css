@@ -143,6 +143,32 @@ a {
         top: 34vh !important;
         left: 20px !important;
     }
+
+    footer {
+        height: 450px !important;
+    }
+
+    footer .container {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .about {
+        margin-left: 0 !important;
+    }
+
+    .left-footer {
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+
+    .right-footer {
+        margin-top: 20px !important;
+        justify-content: space-evenly !important;
+    }
 }
 
 .show-menu {
@@ -436,67 +462,52 @@ a {
 }
 
 footer {
-    background-color: rgba(255,255,255,.8);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    background-color: var(--el-bg-color-overlay);
     clear: both;
     height: 300px;
     width: 100%;
+    margin-bottom: -15px;
 }
 
-.foot-icons {
-    left: 1090px;
-    top: 185px;
-    position: absolute;
+footer .container {
     display: inline-flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
+    width: 100%;
+    height: 100%;
 }
 
-.foot-menus {
-    width: 917px;
-    left: 329px;
-    top: 42px;
-    position: absolute;
-    display: inline-flex;
-    flex-direction: row;
+.footer-logo {
+    width: 220px;
+}
+
+.left-footer {
+    margin-left: 80px;
+    margin-top: 60px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
 }
 
-.foot-button {
-    padding: 10px 15px;
-    left: 322px;
-    top: 175px;
-    position: absolute;
-    border-color: rgba(128, 128, 128, 1);
-    border-width: 1px;
-    border-style: solid;
+.right-footer {
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+}
+
+.right-footer .links {
+    width: 112px;
     display: inline-flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 }
 
-footer .information {
-    left: 319px;
-    top: 232px;
-    position: absolute;
-    font-size: 11px;
-    font-weight: 300;
-    line-height: 100%;
-    color: rgba(128, 128, 128, 1);
-}
-
-footer .title {
-    left: 120px;
-    top: 42px;
-    position: absolute;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 100%;
-    color: black;
+.right-footer .links p {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .chat-bg {
