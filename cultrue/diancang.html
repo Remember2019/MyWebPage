@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>乐舞敦煌</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="author" content="www.dingsm.top, Dimsoft有限公司">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles.css">
+    <!-- 引入 Element Plus 暗黑主题 -->
+    <link rel="stylesheet" href="src/element-plus/index.css"/>
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/dark/css-vars.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/index.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/display.css">
+    <!-- 引入 Element Plus 和 Vue 3 -->
+    <script src="src/vue@3/vue.global.js"></script>
+    <script src="src/element-plus/index.full.js"></script>
+    <script src="src/@element-plus/icons-vue/index.iife.min.js"></script>
+    <script src="assets/script.js"></script>
+    <style>
+        .menu-options > li.current-page:after {
+            content: '';
+            display: block;
+            border-bottom: 2px solid var(--el-text-color-primary) ;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="menus">
+        <div class="logo" style="width: 230px">
+            <a href="index.html">
+                <img src="drawable/logo.svg" alt="Logo">
+            </a>
+        </div>
+        <div id="sidebar" class="menu-nav" style="width:55%;">
+            <i id="close_sidebar_btn" onclick="hideSidebar()" style="cursor: pointer">
+                <svg preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                    <clipPath id="clip1_7798">
+                        <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                    </clipPath>
+                    <g clip-path="url(#clip1_7798)">
+                        <path d="M6 18L18 6M6 6L18 18" stroke=var(--el-text-color-primary) stroke-width="2.000000" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+            </i>
+            <ul class="menu-options" style="width:100%;">
+                <li><a href="zhenshang.html" onclick="errorTip('111')">臻赏</a></li>
+                <li><a href="#" onclick="warnTip('222')">研究</a></li>
+                <li class="current-page"><a href="#" onclick="successTip('333')">典藏</a></li>
+                <li><a href="#">文创</a></li>
+                <li><a href="#">游览</a></li>
+            </ul>
+        </div>
+        <div class="menu-right">
+            <div class="icons" style="width: 45%">
+                <a href="javascript:void(0)" class="icon" onclick="successTip('收藏')">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                        <clipPath id="clip1_7738">
+                            <rect width="24.000000" height="24.000000" fill=var(--el-bg-color) />
+                        </clipPath>
+                        <g clip-path="url(#clip1_7738)">
+                            <path
+                                    d="M4.31802 6.31802C6.07538 4.56067 8.92462 4.56067 10.682 6.31802L12.0001 7.63608L13.318 6.31802C15.0754 4.56067 17.9246 4.56067 19.682 6.31802C21.4393 8.07538 21.4393 10.9246 19.682 12.682L12.0001 20.364L4.31802 12.682C2.56067 10.9246 2.56067 8.07538 4.31802 6.31802Z"
+                                    stroke=var(--el-text-color-primary)
+                                    stroke-width="2.000000"
+                                    stroke-linejoin="round">
+                            </path>
+                        </g>
+                    </svg>
+                </a>
+                <a href="javascript:void(0)" class="icon" onclick="successTip('商城')">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                        <clipPath id="clip1_7932">
+                            <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                        </clipPath>
+                        <g clip-path="url(#clip1_7932)">
+                            <path
+                                    d="M3 3L5 3L5.4 5L7 13M17 17L5.41422 17C4.52331 17 4.07714 15.9229 4.70711 15.2929L7 13L17 13L21 5L5.4 5M17 21C15.8954 21 15 20.1046 15 19C15 17.8954 15.8954 17 17 17C18.1046 17 19 17.8954 19 19C19 20.1046 18.1046 21 17 21ZM7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19C9 20.1046 8.10457 21 7 21Z"
+                                    stroke=var(--el-text-color-primary)
+                                    stroke-width="2.000000"
+                                    stroke-linejoin="round">
+                            </path>
+                        </g>
+                    </svg>
+                </a>
+                <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em"
+                         data-v-12008bb2="">
+                        <path fill=var(--el-text-color-primary)
+                              d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+            <div class="menu-divider"></div>
+            <div class="user-info" style="width: 55%">
+                <a href="./login/login.html" target="_blank">
+                    <div class="user-info-icon" style="border-radius: 100%; overflow: hidden">
+                        <img src="drawable/user-head.webp" alt="用户" style="width: auto; height: 100%;">
+                    </div>
+                    <div class="user-info-text" style="margin-left: 15px">
+                        <p>Remember2023</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar-toggle" style="cursor: pointer">
+            <a onclick="showSidebar()">
+                <svg preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                    <clipPath id="clip1_7666">
+                        <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                    </clipPath>
+                    <g clip-path="url(#clip1_7666)">
+                        <path d="M4 6L20 6M4 12L20 12M4 18L20 18" stroke=var(--el-text-color-primary) stroke-width="2.000000" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div class="banner-book">
+        <div class="banner-banner" style="z-index: 1;">
+            <div class="left-banner banner-container">
+                <div class="left-title">
+                    <h3>中国敦煌美术大典</h3>
+                </div>
+                <div class="left-content">
+                    <p style="text-align: justify; text-indent: 2em; line-height: 170%">
+                        敦煌，位于中国甘肃省，是世界上最重要的历史文化遗址之一，以其千年古老的壁画、雕塑和文学作品而蜚声国际。
+                    </p>
+                    <p style="text-align: justify; text-indent: 2em; line-height: 170%">
+                        《中国敦煌美术大典》收录了丰富的图文资料，系统地展示了敦煌独特而卓越的艺术风格。无论是那些神秘的莫高窟壁画，还是雄伟的佛塔和石窟雕塑，每一件作品都在这本大典中得到了精心的呈现。 通过《中国敦煌美术大典》，您将深入了解敦煌文化的魅力，感受历史的沉淀和艺术的灵感。无论您是艺术爱好者、学者还是普通读者，这本大典都将为您揭示敦煌的神秘面纱，带领您穿越时光，领略千年古老文明的辉煌。 探索敦煌的艺术奇迹，让《中国敦煌美术大典》成为您深入了解这一独特文化遗产的不可或缺的指南。感受古老与现代的交汇，让艺术之美超越时空，与您共同演绎华夏文明的绚丽篇章。
+                    </p>
+                </div>
+            </div>
+            <div class="right-banner banner-container">
+                <img style="width: 90%" src="drawable/book-pics/1.png" alt="中国敦煌美术大典" />
+            </div>
+        </div>
+        <div class="banner-bg">
+            <img style="position: absolute; left: 0; top: 0; height: 100%" src="drawable/book-pics/banner_back.jpg" alt="背景" />
+        </div>
+    </div>
+    <div id="chat-dialog">
+        <el-dialog v-model="visible" title="ChatGPT" modal-class="chat-bg"
+                   style="border-radius: 10px">
+            <div class="my-content">
+                <div class="chat-display">
+                    <el-skeleton :rows="5" animated />
+                </div>
+                <div class="chat-input">
+                    <el-input v-model="input" id="myInput" placeholder="询问ChatGPT" @keyup.enter="submit_message">
+                        <template #append>
+                            <el-button id="submit-btn" type="primary" @click="submit_message">发送</el-button>
+                        </template>
+                    </el-input>
+                </div>
+            </div>
+        </el-dialog>
+    </div>
+    <button id="chatButton" onclick="visible.value = true">
+        <img src="drawable/sparkles.svg" alt="chat" style="width: 30px"/>
+    </button>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="left-footer">
+            <img src="drawable/logo.png" alt="logo" class="footer-logo" />
+            <p style="font-size: 15px; color: var(--el-text-color-regular)">
+                Copyright © 2024 Dingsm Inc. 保留所有权利。
+            </p>
+        </div>
+        <div class="footer-divide" style="width: 200px"></div>
+        <div class="right-footer">
+            <div class="links">
+                <p style="font-size: 20px; font-weight: 600; color: var(--el-text-color-primary);">相关链接</p>
+                <a href="http://www.dhbwg.org.cn/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">敦煌市博物馆</p>
+                </a>
+                <a href="https://www.mgk.org.cn/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">莫高窟预约网</p>
+                </a>
+                <a href="https://www.e-dunhuang.com/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">数字敦煌</p>
+                </a>
+                <a href="https://www.amap.com/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">高德地图</p>
+                </a>
+                <a href="https://www.caiyunapp.com/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">彩云天气</p>
+                </a>
+            </div>
+            <div class="links about" style="margin-left: 200px">
+                <p style="font-size: 20px; font-weight: 600; color: var(--el-text-color-primary);">关于我们</p>
+                <a href="#" onclick="warnTip('丁思铭网站设计')">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">丁思铭网站设计</p>
+                </a>
+                <a href="#" onclick="warnTip('三组创意')">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">三组创意</p>
+                </a>
+                <a href="#" onclick="warnTip('联系电话')">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">联系电话</p>
+                </a>
+                <a href="https://chatai.dingsm.top" onclick="warnTip('ChatAI')" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);;">ChatAI</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    const {ref} = Vue;
+    const { ElInput, ElMessage, ElCarousel, ElSkeleton } = ElementPlus;
+    const { CircleCloseFilled, Close, Menu } = ElementPlusIconsVue;
+    const errorTip = (content) => {
+        ElMessage.error(content)
+    }
+    const warnTip = (content) => {
+        ElMessage({
+            message: content,
+            type: 'warning',
+        })
+    }
+    const successTip = (content) => {
+        ElMessage({
+            message: content,
+            type: 'success',
+        })
+    }
+
+    const App = {
+        setup() {
+            const visible = ref(false)
+            const input = ref('')
+            window.visible = visible
+            window.errorTip = errorTip
+            window.warnTip = warnTip
+            window.successTip = successTip
+            return {
+                visible,
+                input,
+                errorTip,
+                warnTip,
+                successTip,
+            }
+        },
+        components: { CircleCloseFilled, Close, Menu, ElSkeleton },
+        methods: {
+            submit_message() {
+                submit();
+            }
+        }
+    }
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
+</body>
+</html>
