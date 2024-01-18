@@ -5,11 +5,20 @@ html {
     -webkit-text-size-adjust: none;
 }
 
+html.dark .menus .logo img {
+    content: url(../drawable/logo-dark.svg);
+}
+
+html.dark .menus {
+    background-color: rgba(0,0,0,.8);
+}
+
 body {
-    background: #F7F4E5 url(../drawable/bg2.jpg);
+    background: url(../drawable/bg2.jpg);
     color: #444;
-    font-family: "Helvetica Neue", Arial, "PingFang SC", 宋体, serif;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-size: 15px;
+    -webkit-font-smoothing: antialiased;
     margin: 0;
     overflow-x: hidden;
 }
@@ -46,7 +55,7 @@ a {
         position: fixed;
         top: 0;
         right: -100%;
-        z-index: 1;
+        z-index: 1000;
         /*height: 100%;*/
         width: 250px !important;
         transition: .4s;
@@ -104,6 +113,36 @@ a {
     .chat-display {
         height: 75% !important;
     }
+    .el-carousel__item img {
+        transform: translateY(40%) !important;
+    }
+    .el-carousel__item #luwang {
+        transform: translateY(10%) !important;
+        height: 100% !important;
+        width: fit-content !important;
+    }
+    .el-carousel__item #pusa {
+        transform: translateY(10%) !important;
+    }
+    .zhenshang-top-banner .el-carousel {
+        height: 46vh !important;
+        transition: .4s;
+        position: relative;
+        z-index: 1;
+    }
+
+    .el-carousel__item h3 {
+        font-size: 25px !important;
+    }
+
+    .el-carousel__item h4 {
+        margin-top: -20px !important;
+    }
+
+    .el-carousel__item .banner-subtitle {
+        top: 34vh !important;
+        left: 20px !important;
+    }
 }
 
 .show-menu {
@@ -127,7 +166,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: var(--el-bg-color-overlay);
+    background-color: rgba(255,255,255,.8);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     transition: .4s;
@@ -139,8 +178,12 @@ a {
     align-items: center;
 }
 
-.menus .logo img{
+.menus .logo a{
     width: 80%;
+}
+
+.menus .logo img{
+    width: 100%;
 }
 
 .menus .menu-options {
@@ -249,7 +292,7 @@ a {
     right: -100%;*/
 }
 
-.menus .sidebar-toggle img {
+.menus .sidebar-toggle svg {
     width: 28px;
     cursor: pointer;
 }
@@ -362,26 +405,14 @@ a {
     height: 400px;
 }
 
-.el-carousel__item h3 {
-    color: #475669;
-    opacity: 0.75;
-    line-height: 250px;
-    margin: 0;
-    text-align: center;
-}
-.el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-}
-.el-carousel__item:nth-child(2n + 1) {
-    background-color: #d3dce6;
-}
-
 #card_app {
     margin: 40px 50px;
 }
 
 .works .switch_cards {
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .works .switch_cards .card {
@@ -402,21 +433,6 @@ a {
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-}
-.el-carousel__item h3 {
-    color: #475669;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-    text-align: center;
-}
-
-.el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-    background-color: #d3dce6;
 }
 
 footer {
@@ -566,11 +582,50 @@ footer .title {
 #chatButton {
     cursor: pointer;
     position: fixed;
+    z-index: 1;
     right: 20px;
     bottom: 20px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     border: none;
+    box-shadow: var(--el-box-shadow-dark);
     background: linear-gradient(to bottom, #ff0000, #0000ff);
+}
+
+.el-carousel__item .banner-subtitle {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    top: 38vh;
+    left: 40px;
+    width: 100%;
+}
+
+.el-carousel__item h3 {
+    color: #fff5e7;
+    text-shadow: 1px 1px 10px black;
+    font-family: "方正大标宋简体", serif;
+    font-size: 35px;
+    text-align: left;
+}
+
+.el-carousel__item h4 {
+    color: #fff5e7;
+    margin-top: -30px;
+    margin-left: 15px;
+    text-shadow: 1px 1px 10px black;
+    font-family: "方正兰亭黑简体",Inter, system-ui, Avenir, serif;
+    font-size: 18px;
+    text-align: left;
+}
+
+.el-carousel__item .img-overlay {
+    background-color: rgba(0,0,0,.2);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
 }
