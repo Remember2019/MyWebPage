@@ -47,6 +47,11 @@ a {
     src: url("fonts/zhbgtxt.woff2");
 }
 
+@font-face {
+    font-family: 'FZFW ZhuZi GuDianS LMC';
+    src: url("fonts/FZFWZhuZGDLMCJW.TTF");
+}
+
 @media only screen and (max-width: 780px) {
     .menus {
         padding: 1rem;
