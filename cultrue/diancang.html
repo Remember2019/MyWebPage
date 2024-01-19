@@ -30,6 +30,7 @@
         }
     </style>
 </head>
+
 <body>
 <div id="app">
     <div class="menus">
@@ -51,11 +52,11 @@
                 </svg>
             </i>
             <ul class="menu-options" style="width:100%;">
-                <li><a href="zhenshang.html" onclick="errorTip('111')">臻赏</a></li>
-                <li><a href="#" onclick="warnTip('222')">研究</a></li>
-                <li class="current-page"><a href="#" onclick="successTip('333')">典藏</a></li>
-                <li><a href="#">文创</a></li>
-                <li><a href="#">游览</a></li>
+                <li><a href="zhenshang.html">臻赏</a></li>
+                <li><a href="studies.html">研究</a></li>
+                <li class="current-page"><a href="#">典藏</a></li>
+                <li><a href="wenchuang.html">文创</a></li>
+                <li><a href="visit.html">游览</a></li>
             </ul>
         </div>
         <div class="menu-right">
@@ -151,6 +152,41 @@
             <img style="position: absolute; left: 0; top: 0; height: 100%" src="drawable/book-pics/banner_back.jpg" alt="背景" />
         </div>
     </div>
+    <div class="book-list">
+        <div class="title">
+            <h3>图书阅览</h3>
+        </div>
+        <div class="search-book">
+            <el-input v-model="search_input" placeholder="搜索图书"></el-input>
+            <el-button type="primary" :icon="Search" circle />
+        </div>
+        <div class="first-list book-row">
+            <div class="books">
+                <img src="drawable/book-pics/2.png" alt="" onclick="showBookDetail('1')" />
+                <img src="drawable/book-pics/3.png" alt="" onclick="showBookDetail('2')" />
+                <img src="drawable/book-pics/4.png" alt="" onclick="showBookDetail('3')" />
+            </div>
+            <img style="margin-top: -30px" src="drawable/book-pics/book-shelf.svg" alt="" />
+        </div>
+        <div class="second-list book-row">
+            <div class="books">
+                <img src="drawable/book-pics/5.png" alt="" onclick="showBookDetail('4')" />
+                <img src="drawable/book-pics/6.png" alt="" onclick="showBookDetail('5')" />
+                <img src="drawable/book-pics/7.png" alt="" onclick="showBookDetail('6')" />
+            </div>
+            <img style="margin-top: -30px" src="drawable/book-pics/book-shelf.svg" alt="" />
+        </div>
+        <el-drawer
+                v-model = "drawer"
+                :title = "this_title"
+                size = "35%"
+        >
+            <div class="book-detail">
+                <img style="height: 250px" :src="this_path" alt="" />
+                <p style="text-indent: 2em; text-align: justify">{{ this_detail }}</p>
+            </div>
+        </el-drawer>
+    </div>
     <div id="chat-dialog">
         <el-dialog v-model="visible" title="ChatGPT" modal-class="chat-bg"
                    style="border-radius: 10px">
@@ -221,8 +257,8 @@
 </footer>
 <script>
     const {ref} = Vue;
-    const { ElInput, ElMessage, ElCarousel, ElSkeleton } = ElementPlus;
-    const { CircleCloseFilled, Close, Menu } = ElementPlusIconsVue;
+    const { ElInput, ElMessage, ElCarousel, ElSkeleton, ElDrawer } = ElementPlus;
+    const { CircleCloseFilled, Close, Menu, Search } = ElementPlusIconsVue;
     const errorTip = (content) => {
         ElMessage.error(content)
     }
@@ -243,19 +279,36 @@
         setup() {
             const visible = ref(false)
             const input = ref('')
+            const search_input = ref('')
+            const drawer = ref(false)
+            const this_detail = ref('')
+            const this_title = ref('')
+            const this_path = ref('drawable/book-pics/2.png')
             window.visible = visible
             window.errorTip = errorTip
             window.warnTip = warnTip
             window.successTip = successTip
+            window.drawer = drawer
+            window.this_detail = this_detail
+            window.this_title = this_title
+            window.this_path = this_path
             return {
                 visible,
                 input,
+                search_input,
+                drawer,
+                this_detail,
+                this_title,
+                this_path,
+                Search,
+                CircleCloseFilled,
+                Menu,
                 errorTip,
                 warnTip,
                 successTip,
             }
         },
-        components: { CircleCloseFilled, Close, Menu, ElSkeleton },
+        components: { CircleCloseFilled, Close, Menu, ElSkeleton, Search },
         methods: {
             submit_message() {
                 submit();

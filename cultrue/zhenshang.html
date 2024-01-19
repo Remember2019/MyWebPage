@@ -51,11 +51,11 @@
                     </svg>
                 </i>
                 <ul class="menu-options" style="width:100%;">
-                    <li class="current-page"><a href="#" onclick="errorTip('111')">臻赏</a></li>
-                    <li><a href="#" onclick="warnTip('222')">研究</a></li>
-                    <li><a href="diancang.html" onclick="successTip('333')">典藏</a></li>
-                    <li><a href="#">文创</a></li>
-                    <li><a href="#">游览</a></li>
+                    <li class="current-page"><a href="#">臻赏</a></li>
+                    <li><a href="studies.html">研究</a></li>
+                    <li><a href="diancang.html">典藏</a></li>
+                    <li><a href="wenchuang.html">文创</a></li>
+                    <li><a href="visit.html">游览</a></li>
                 </ul>
             </div>
             <div class="menu-right">
@@ -129,46 +129,132 @@
             </div>
         </div>
         <div class="zhenshang-top-banner">
-            <el-carousel height="52vh">
+            <el-carousel height="100vh" interval="3000">
                 <el-carousel-item>
                     <img src="drawable/mural-pics/12xiannv.jpeg"
-                         style="width:100%; overflow: hidden; transform: translateY(-10%);"
+                         style="width:100%; overflow: hidden;"
                          alt="12仙女图" />
-                    <div class="img-overlay"></div>
                     <div class="banner-subtitle">
                         <h3>《飞天·十二仙女图》</h3>
-                        <h4>唐代，敦煌莫高窟158窟</h4>
+                        <h4>出现在第158窟，共有三身飞天，分别位于西壁裟罗树间菩萨列像上方的南、中、北侧，给人以强烈的动感。</h4>
                     </div>
                 </el-carousel-item>
                 <el-carousel-item>
-                    <img id="luwang" src="drawable/mural-pics/luwangbensheng.webp"
-                         style="width:100%; overflow: hidden; transform: translateY(18%)"
-                         alt="鹿王本生图" />
-                    <div class="img-overlay"></div>
+                    <img id="luwang" src="drawable/mural-pics/9colorlu.jpg"
+                         style="width:100%; overflow: hidden"
+                         alt="九色鹿救人图" />
                     <div class="banner-subtitle">
-                        <h3>《鹿王本生图》</h3>
-                        <h4>北魏，敦煌莫高窟257窟</h4>
+                        <h3>《九色鹿救人图》</h3>
+                        <h4>北魏时期第257窟壁画，讲述了鹿王的传说故事，以其精湛的艺术技巧和色彩运用被誉为北魏洞窟中最优美的作品之一。</h4>
                     </div>
                 </el-carousel-item>
                 <el-carousel-item>
-                    <img id="pusa" src="drawable/mural-pics/pusa_beauty.jpg"
-                         style="width:100%; overflow: hidden; transform: translateY(-3%)"
-                         alt="美人菩萨像" />
-                    <div class="img-overlay"></div>
+                    <img id="pusa" src="drawable/mural-pics/wofo.jpg"
+                         style="width:100%; overflow: hidden"
+                         alt="卧佛像" />
                     <div class="banner-subtitle">
-                        <h3>《美人菩萨像》</h3>
-                        <h4>初唐，敦煌莫高窟57窟</h4>
+                        <h3>《卧佛像》</h3>
+                        <h4>位于第158窟，释迦牟尼涅槃时的形象，体态修长，表情恬静，体现了佛教涅槃观。</h4>
                     </div>
                 </el-carousel-item>
             </el-carousel>
         </div>
-
+        <div class="zhenshang-content">
+            <div class="item">
+                <img style="transform: translateY(-5%)" src="drawable/mural-pics/pusa_beauty.jpg" alt="1">
+                <div class="img-overlay"></div>
+                <div class="item-subtitle">
+                    <h3>《美人菩萨》</h3>
+                    <h4>出自敦煌莫高窟第57窟，初唐。</h4>
+                    <div class="item-button">
+                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/pusa_beauty.jpg')">查看作品细节</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="drawable/mural-pics/luwangbensheng.webp" alt="2">
+                <div class="img-overlay"></div>
+                <div class="item-subtitle">
+                    <h3>《鹿王本生图》</h3>
+                    <h4>出自敦煌莫高窟第257窟，北魏，全图纵58cm，横390cm。</h4>
+                    <div class="item-button">
+                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/luwangbensheng.webp')">查看作品细节</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img style="transform: translateY(-30%)" src="drawable/mural-pics/feitian2.jpg" alt="3">
+                <div class="img-overlay"></div>
+                <div class="item-subtitle">
+                    <h3>《飞天·仙女》</h3>
+                    <h4>出自敦煌莫高窟，几乎窟窟都有《飞天》壁画，魏晋南北朝。</h4>
+                    <div class="item-button">
+                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/feitian2.jpg')">查看作品细节</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img style="transform: translateY(-40%)" src="drawable/mural-pics/shoulie.jpg" alt="7">
+                <div class="img-overlay"></div>
+                <div class="item-subtitle">
+                    <h3>《狩猎图》</h3>
+                    <h4>出自敦煌莫高窟第249窟，西魏。</h4>
+                    <div class="item-button">
+                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/shoulie.jpg')">查看作品细节</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img style="transform: translateY(-10%)" src="drawable/mural-pics/feitian3.jpg" alt="4">
+                <div class="img-overlay"></div>
+                <div class="item-subtitle">
+                    <h3>《天宫伎乐》</h3>
+                    <h4>出自敦煌莫高窟第390窟，隋朝。</h4>
+                    <div class="item-button">
+                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/feitian3.jpg')">查看作品细节</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img style="transform: translateY(-28%)" src="drawable/mural-pics/suowenjingbian.jpg" alt="5">
+                <div class="img-overlay"></div>
+                <div class="item-subtitle">
+                    <h3>《思益梵天所问经变》</h3>
+                    <h4>出自敦煌莫高窟第158窟，晚唐。</h4>
+                    <div class="item-button">
+                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/suowenjingbian.jpg')">查看作品细节</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img style="transform: translateY(-55%)" src="drawable/mural-pics/shenshou.jpg" alt="6">
+                <div class="img-overlay"></div>
+                <div class="item-subtitle">
+                    <h3>《神兽图》</h3>
+                    <h4>出自敦煌莫高窟第208窟，魏晋南北朝。</h4>
+                    <div class="item-button">
+                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/shenshou.jpg')">查看作品细节</el-button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img style="transform: translateY(-40%)" src="drawable/mural-pics/hxl.jpg" alt="6">
+                <div class="img-overlay"></div>
+                <div class="item-subtitle">
+                    <h3>《精选照片》</h3>
+                    <h4>出自敦煌莫高窟第208窟，魏晋南北朝。</h4>
+                    <div class="item-button">
+                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/hxl.jpg')">查看作品细节</el-button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="chat-dialog">
             <el-dialog v-model="visible" title="ChatGPT" modal-class="chat-bg"
                        style="border-radius: 10px">
                 <div class="my-content">
                     <div class="chat-display">
-                        <el-skeleton :rows="5" animated />
+                        <el-skeleton :rows="1" animated />
                     </div>
                     <div class="chat-input">
                         <el-input v-model="input" id="myInput" placeholder="询问ChatGPT" @keyup.enter="submit_message">
@@ -190,7 +276,7 @@
             <div class="left-footer">
                 <img src="drawable/logo.png" alt="logo" class="footer-logo" />
                 <p style="font-size: 15px; color: var(--el-text-color-regular)">
-                    Copyright © 2024 Dingsm Inc. 保留所有权利。
+                    Copyright © 2024 丁思铭 团队 保留所有权利。
                 </p>
             </div>
             <div class="footer-divide" style="width: 200px"></div>
@@ -233,7 +319,7 @@
     </footer>
     <script>
         const {ref} = Vue;
-        const { ElInput, ElMessage, ElCarousel, ElSkeleton } = ElementPlus;
+        const { ElInput, ElMessage, ElCarousel, ElSkeleton, ElImage } = ElementPlus;
         const { CircleCloseFilled, Close, Menu } = ElementPlusIconsVue;
         const errorTip = (content) => {
             ElMessage.error(content)
@@ -267,10 +353,13 @@
                     successTip,
                 }
             },
-            components: { CircleCloseFilled, Close, Menu, ElSkeleton },
+            components: { CircleCloseFilled, Close, Menu, ElSkeleton, ElImage },
             methods: {
                 submit_message() {
                     submit();
+                },
+                gotoPreview(src) {
+                    window.open(`preview_pic.html?src=${src}`,'_blank');
                 }
             }
         }
