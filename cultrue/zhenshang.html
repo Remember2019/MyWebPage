@@ -76,7 +76,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a href="javascript:void(0)" class="icon" onclick="successTip('商城')">
+                    <a href="wenchuang.html" class="icon">
                         <svg preserveAspectRatio="xMidYMid meet"
                              viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
                             <clipPath id="clip1_7932">
@@ -237,17 +237,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <img style="transform: translateY(-40%)" src="drawable/mural-pics/hxl.jpg" alt="6">
-                <div class="img-overlay"></div>
-                <div class="item-subtitle">
-                    <h3>《精选照片》</h3>
-                    <h4>出自敦煌莫高窟第208窟，魏晋南北朝。</h4>
-                    <div class="item-button">
-                        <el-button type="info" @click="gotoPreview('drawable/mural-pics/hxl.jpg')">查看作品细节</el-button>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div id="chat-dialog">
             <el-dialog v-model="visible" title="ChatGPT" modal-class="chat-bg"
@@ -278,6 +268,9 @@
                 <p style="font-size: 15px; color: var(--el-text-color-regular)">
                     Copyright © 2024 丁思铭 团队 保留所有权利。
                 </p>
+                <p style="margin-top: 0; font-size: 15px; color: var(--el-text-color-regular)">
+                    *所有素材仅供网页学习交流使用
+                </p>
             </div>
             <div class="footer-divide" style="width: 200px"></div>
             <div class="right-footer">
@@ -301,16 +294,16 @@
                 </div>
                 <div class="links about" style="margin-left: 200px">
                     <p style="font-size: 20px; font-weight: 600; color: var(--el-text-color-primary);">关于我们</p>
-                    <a href="#" onclick="warnTip('丁思铭网站设计')">
+                    <a href="javascript:void(0)" onclick="warnTip('丁思铭网站设计')">
                         <p style="font-size: 15px; color: var(--el-text-color-regular);">丁思铭网站设计</p>
                     </a>
-                    <a href="#" onclick="warnTip('三组创意')">
-                        <p style="font-size: 15px; color: var(--el-text-color-regular);">三组创意</p>
+                    <a href="about.html">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">团队成员</p>
                     </a>
-                    <a href="#" onclick="warnTip('联系电话')">
-                        <p style="font-size: 15px; color: var(--el-text-color-regular);">联系电话</p>
+                    <a href="about.html">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">联系我们</p>
                     </a>
-                    <a href="https://chatai.dingsm.top" onclick="warnTip('ChatAI')" target="_blank">
+                    <a href="https://chatai.dingsm.top" target="_blank">
                         <p style="font-size: 15px; color: var(--el-text-color-regular);;">ChatAI</p>
                     </a>
                 </div>

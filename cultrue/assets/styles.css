@@ -13,6 +13,23 @@ html.dark .menus {
     background-color: rgba(0,0,0,.8);
 }
 
+html.dark .big-scene-banner .big-bg {
+    width: 100%;
+    content: url("../drawable/scenes-pics/yueyaquan_dark.png");
+}
+
+html.dark .studies-body .video-card {
+    background-color: rgb(110, 64, 16, .6);
+}
+
+html.dark .commit-form {
+    background-color: rgba(0, 0, 0, .6);
+}
+
+html.dark .commit-form h3 {
+    color: var(--el-text-color-primary);
+}
+
 body {
     background: url(../drawable/bg2.jpg);
     color: #444;
@@ -50,6 +67,11 @@ a {
 @font-face {
     font-family: 'FZFW ZhuZi GuDianS LMC';
     src: url("fonts/FZFWZhuZGDLMCJW.TTF");
+}
+
+@font-face {
+    font-family: 'PriceNums';
+    src: url("fonts/price-num.ttf");
 }
 
 @media only screen and (max-width: 780px) {
@@ -116,6 +138,9 @@ a {
     }
     .banner .content p {
         font-size: 2em !important;
+    }
+    .el-drawer {
+        width: 100% !important;
     }
     .el-dialog {
         width: 100% !important;
@@ -377,7 +402,7 @@ a {
 .banner {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    overflow: clip;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -477,40 +502,49 @@ a {
     font-weight: bold;
 }
 
-.works {
-    margin-top: 50px;
-    width: 100%;
-    height: 400px;
+.index-content {
+    margin: 50px 100px 50px 100px;
+    display: flex;
+    flex-direction: column;
 }
 
-#card_app {
-    margin: 40px 50px;
-}
-
-.works .switch_cards {
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.works .switch_cards .card {
-    margin-left: 12px;
-    margin-right: 12px;
-    width: 100px;
-    overflow: hidden;
-}
-
-.switch_cards .card image {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.works .title {
-    padding: 8px 120px;
+.index-content .title {
     display: inline-flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
+    font-size: 35px;
+    font-weight: bold;
+    color: #9f5b14;
+    font-family: "方正大标宋简体", Inter, system-ui, Avenir, serif;
+}
+
+.index-content .title > p {
+    margin: 0;
+}
+
+.index-content .content {
+    font-size: 20px;
+    font-weight: normal;
+    font-family: 方正兰亭黑简体, system-ui;
+    color: #424040;
+    text-shadow: 1px 1px 10px #9b9797;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.index-content .content p {
+    line-height: 200%;
+    margin: 0;
+}
+
+.index-content .el-button {
+    border-radius: 50px;
+}
+
+.index-content .el-button > span {
+    font-size: 18px;
+    font-family: 方正兰亭粗黑简体, system-ui;
 }
 
 footer {
@@ -825,21 +859,157 @@ footer .container {
     background-color: #444444;
 }
 
-.big-scene-banner img {
+.big-scene-banner .big-bg {
     width: 100%;
+    content: url("../drawable/scenes-pics/yueyaquan.jpg");
 }
 
-.big-scene-banner .weather-card {
+.big-scene-banner .title {
     position: absolute;
     display: flex;
+    flex-direction: column;
+    color: var(--el-text-color-primary);
+    top: 15%;
+    left: 20%;
+}
+
+.big-scene-banner .title h3 {
+    font-size: 80px;
+    font-family: "方正兰亭粗黑简体", Inter, system-ui, Avenir, serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px var(--el-bg-color-overlay);
+    margin-bottom: 10px;
+}
+
+.big-scene-banner .title h4 {
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px var(--el-bg-color-overlay);
+    margin-top: 10px;
+}
+
+.big-scene-banner .start-card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
     top: 20%;
-    left: 7%;
-    width: 300px;
-    height: 600px;
-    background-color: rgba(255,255,255,.5);
+    right: 0;
+    width: 500px;
+    height: 400px;
+    background-color: rgba(255,255,255, 0.2);
     backdrop-filter: blur(10px);
-    border-radius: 10px;
-    border: 1px solid #E5EAF3;
+    border-radius: 25px 0 0 25px;
+}
+
+.start-card .weather {
+    height: 80%;
+}
+
+.start-card .weather-title {
+    display: flex;
+    flex-direction: row;
+    height: 60%;
+    justify-content: center;
+}
+
+.start-card .weather-title p {
+    margin: 0;
+    font-family: 方正兰亭粗黑简体, Inter, system-ui, Avenir, serif;
+    color: var(--el-text-color-primary);
+    text-shadow: 0 0 5px #c2b1b1;
+}
+
+.weather-title .tem-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.weather .weather-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: var(--el-text-color-regular);
+}
+
+.weather-detail .weather-day p {
+    font-size: 19px;
+    margin: 10px;
+}
+
+.start-card .go {
+    background-color: rgba(255,255,255, 0.4);
+    backdrop-filter: blur(20px);
+    border-radius: 0 0 0 25px;
+    transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
+.start-card .go:hover {
+    background-color: rgba(134, 115, 115, 0.4);
+    transition: .4s;
+}
+
+.go .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+    width: 75%;
+}
+
+.go .container h1 {
+    margin: 0;
+    font-size: 25px;
+    font-family: 方正兰亭黑简体, system-ui;
+    color: var(--el-text-color-primary);
+}
+
+.el-collapse-item__header {
+    font-size: 20px !important;
+    margin: 10px;
+    font-weight: normal;
+    font-family: "方正兰亭粗黑简体", Inter, system-ui, Avenir, serif;
+    color: var(--el-text-color-primary);
+}
+
+.el-timeline {
+    margin: 10px !important;
+}
+
+.el-timeline-item__wrapper .el-card {
+    border-radius: 10px !important;
+}
+
+.el-timeline-item__wrapper .is-top {
+    font-size: 20px;
+    font-weight: normal;
+    font-family: "方正兰亭粗黑简体", Inter, system-ui, Avenir, serif;
+    color: var(--el-text-color-primary);
+}
+
+.el-timeline-item__wrapper .el-card__body h4 {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "方正兰亭黑简体", system-ui;
+    color: var(--el-text-color-primary);
+}
+
+.el-timeline-item__wrapper .el-card__body p {
+    font-size: 16px;
+    font-family: "方正兰亭黑简体", system-ui;
+    text-align: justify;
+    line-height: 150%;
+    color: var(--el-text-color-primary);
+}
+
+.el-timeline-item__wrapper .el-card__body img {
+    height: 250px;
+    margin: 10px;
 }
 
 .book-list {
@@ -933,13 +1103,245 @@ footer .container {
     top: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+}
+
+.studies-body {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.study-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    z-index: auto;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-top: -50px;
+}
+
+.study-cards .card {
+    height: 100%;
+    width: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 1px 1px 20px #7a7171;
+}
+
+.study-cards .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    position: absolute;
+}
+
+.study-cards .card-text {
+    text-align: left;
+    margin-left: 30px;
+    margin-top: -50px;
+    z-index: auto;
+    position: relative;
+    text-shadow: 1px 1px 30px #b6a7a7;
+}
+
+.card-text h3 {
+    font-size: 33px;
+    font-family: 方正兰亭粗黑简体, system-ui;
+    font-weight: normal;
+    color: white;
+    margin: 0;
+}
+
+.card-text p {
+    font-size: 18px;
+    font-family: 方正兰亭黑简体, system-ui;
+    margin-top: 10px;
+    color: white;
+}
+
+.studies-body .interview-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.studies-body h1 {
+    text-align: center;
+    font-family: "方正大标宋简体", Inter, system-ui, Avenir, serif;
+    color: #9f5b14;
+    margin-top: 80px;
+    margin-bottom: 0;
+}
+
+.studies-body .video-card {
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    background-color: rgba(241, 214, 182, 0.6);
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.video-card-video {
+    height: 100%;
+    border-radius: 10px;
+    width: 350px;
+}
+
+.video-card-video video {
+    height: 100%;
+    width: 350px;
+    border-radius: 10px;
+    object-fit: fill;
+}
+
+.video-card .video-card-text {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-card-text p {
+    text-indent: 2em;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--el-text-color-primary);
+    font-family: "方正兰亭黑简体", Inter, system-ui, Avenir, serif;
 }
 
 .commit-form {
     border: 2px solid var(--el-border-color);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 30px;
-    margin-left: 100px;
-    margin-right: 100px;
-    background-color: var(--el-bg-color-overlay);
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(20px);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#form-result {
+    display: none !important;
+}
+
+.wenchuang-banner {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.wenchuang-banner img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wenchuang-banner .banner-title {
+    position: absolute;
+    z-index: 1;
+    top: 40%;
+    width: 600px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: 1px solid white;
+    background-color: rgba(255,255,255,.6);
+    backdrop-filter: blur(20px);
+}
+
+.wenchuang-banner .banner-title h3 {
+    font-family: "方正兰亭黑简体", Inter, system-ui, Avenir, serif;
+    font-size: 45px;
+    font-weight: lighter;
+}
+
+.wenchuang-body {
+    margin: 30px 100px 50px 100px;
+}
+
+.wenchuang-body h1 {
+    text-align: center;
+    font-family: "方正大标宋简体", Inter, system-ui, Avenir, serif;
+    color: #9f5b14;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px; /* 根据需要调整间隙大小 */
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.product-image {
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    background-size: cover;
+    background-position: center;
+    transition: .5s;
+    overflow: hidden;
+    box-shadow: 1px 1px 20px #968888;
+}
+
+.product-image:hover {
+    transition: .5s;
+    transform: scale(1.1);
+}
+
+.product-info {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product-info .title {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.product-name {
+    margin: 5px;
+    font-size: 20px;
+    font-family: 方正兰亭粗黑简体, system-ui;
+    font-weight: normal;
+}
+
+.product-price {
+    margin: 5px;
+    font-size: 30px;
+    font-family: "PriceNums", system-ui;
+    color: #ee5858;
+    font-weight: bold;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 5px;
 }

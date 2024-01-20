@@ -1,0 +1,229 @@
+<html lang="zh-CN">
+<head>
+    <title>乐舞敦煌</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="author" content="www.dingsm.top, Dimsoft有限公司">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles.css">
+    <!-- 引入 Element Plus 暗黑主题 -->
+    <link rel="stylesheet" href="src/element-plus/index.css"/>
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/dark/css-vars.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/index.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/display.css">
+    <!-- 引入 Element Plus 和 Vue 3 -->
+    <script src="src/vue@3/vue.global.js"></script>
+    <script src="src/element-plus/index.full.js"></script>
+    <script src="src/@element-plus/icons-vue/index.iife.min.js"></script>
+    <script src="assets/script.js"></script>
+    <style>
+        .about-content {
+            margin: 40px;
+            font-family: Inter, system-ui;
+        }
+        .about-content h1 {
+            font-size: 32px;
+            font-family: "方正兰亭粗黑简体", system-ui, serif;
+            font-weight: normal;
+            margin-top: 100px;
+            color: var(--el-text-color-primary);
+        }
+        .about-content h3 {
+            font-size: 25px;
+            font-family: "方正兰亭黑简体", system-ui, serif;
+            color: var(--el-text-color-primary);
+        }
+        .about-content p {
+            font-size: 18px;
+            line-height: 150%;
+            font-family: "方正兰亭黑简体", system-ui;
+            color: var(--el-text-color-regular);
+        }
+        .about-content img {
+            height: 600px;
+        }
+        .use-plug-icons {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body style="background: var(--el-bg-color-overlay)">
+<div id="app">
+    <div class="menus" style="position: relative">
+        <div class="logo" style="width: 230px">
+            <a href="index.html">
+                <img src="drawable/logo.svg" alt="Logo">
+            </a>
+        </div>
+        <div id="sidebar" class="menu-nav" style="width:55%;">
+            <i id="close_sidebar_btn" onclick="hideSidebar()" style="cursor: pointer">
+                <svg preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                    <clipPath id="clip1_7798">
+                        <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                    </clipPath>
+                    <g clip-path="url(#clip1_7798)">
+                        <path d="M6 18L18 6M6 6L18 18" stroke=var(--el-text-color-primary) stroke-width="2.000000" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+            </i>
+            <ul class="menu-options" style="width:100%;">
+                <li><a href="zhenshang.html">臻赏</a></li>
+                <li><a href="studies.html">研究</a></li>
+                <li><a href="diancang.html">典藏</a></li>
+                <li><a href="wenchuang.html">文创</a></li>
+                <li><a href="visit.html">游览</a></li>
+            </ul>
+        </div>
+        <div class="menu-right">
+            <div class="icons" style="width: 45%">
+                <a href="javascript:void(0)" class="icon" onclick="successTip('收藏')">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                        <clipPath id="clip1_7738">
+                            <rect width="24.000000" height="24.000000" fill=var(--el-bg-color) />
+                        </clipPath>
+                        <g clip-path="url(#clip1_7738)">
+                            <path
+                                    d="M4.31802 6.31802C6.07538 4.56067 8.92462 4.56067 10.682 6.31802L12.0001 7.63608L13.318 6.31802C15.0754 4.56067 17.9246 4.56067 19.682 6.31802C21.4393 8.07538 21.4393 10.9246 19.682 12.682L12.0001 20.364L4.31802 12.682C2.56067 10.9246 2.56067 8.07538 4.31802 6.31802Z"
+                                    stroke=var(--el-text-color-primary)
+                                    stroke-width="2.000000"
+                                    stroke-linejoin="round">
+                            </path>
+                        </g>
+                    </svg>
+                </a>
+                <a href="wenchuang.html" class="icon">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                        <clipPath id="clip1_7932">
+                            <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                        </clipPath>
+                        <g clip-path="url(#clip1_7932)">
+                            <path
+                                    d="M3 3L5 3L5.4 5L7 13M17 17L5.41422 17C4.52331 17 4.07714 15.9229 4.70711 15.2929L7 13L17 13L21 5L5.4 5M17 21C15.8954 21 15 20.1046 15 19C15 17.8954 15.8954 17 17 17C18.1046 17 19 17.8954 19 19C19 20.1046 18.1046 21 17 21ZM7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19C9 20.1046 8.10457 21 7 21Z"
+                                    stroke=var(--el-text-color-primary)
+                                    stroke-width="2.000000"
+                                    stroke-linejoin="round">
+                            </path>
+                        </g>
+                    </svg>
+                </a>
+                <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em"
+                         data-v-12008bb2="">
+                        <path fill=var(--el-text-color-primary)
+                              d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+            <div class="menu-divider"></div>
+            <div class="user-info" style="width: 55%">
+                <a href="./login/login.html" target="_blank">
+                    <div class="user-info-icon" style="border-radius: 100%; overflow: hidden">
+                        <img src="drawable/user-head.webp" alt="用户" style="width: auto; height: 100%;">
+                    </div>
+                    <div class="user-info-text" style="margin-left: 15px">
+                        <p>Remember2023</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar-toggle" style="cursor: pointer">
+            <a onclick="showSidebar()">
+                <svg preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                    <clipPath id="clip1_7666">
+                        <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                    </clipPath>
+                    <g clip-path="url(#clip1_7666)">
+                        <path d="M4 6L20 6M4 12L20 12M4 18L20 18" stroke=var(--el-text-color-primary) stroke-width="2.000000" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div class="about-content">
+        <h1 style="margin-top: 10px">关于我们</h1>
+        <h3>团队概况</h3>
+        <p>“乐舞敦煌”项目组，是由丁思铭团队组织的，本次项目开发是《学习平台设计与开发》课程的团队任务，团队为电教综2101班第3组，团队成员共4名。</p>
+        <p>本项目旨在弘扬中国传统文化，发扬文化自信，以“敦煌”地区为例，引领大家欣赏、学习祖国壮丽美景，并从中有所收获，提高文化素养。</p>
+        <h3>团队成员(排名不分先后)</h3>
+        <p>丁思铭 曹晔 高东腾 李臣瑜</p>
+        <h3>联系方式</h3>
+        <p>电话：178-5329-6436</p>
+        <p>邮箱：dingsm2018@qq.com</p>
+        <h1>版权声明</h1>
+        <p>Dimsoft为丁思铭创建的虚拟公司名称，所有素材、资源仅供网页学习交流使用。</p>
+        <p>“乐舞敦煌”Logo是丁思铭使用Adobe illustrator原创的，未经授权严禁使用。</p>
+        <p>*dingsm.top是丁思铭注册的个人域名(证书如下)，本网站使用的子域名是culture。</p>
+        <img src="drawable/dingsm.top_certificate.jpg" alt="" />
+        <h1>使用组件</h1>
+        <p>Vue3(基于Vue.js) + Element Plus</p>
+        <div class="use-plug-icons">
+            <img style="margin-right: 20px; height: 50px" src="drawable/vue-logo.png" alt="vue" />
+            <img style="height: 50px" src="drawable/element-plus-logo.svg" alt="element-plus" />
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="left-footer">
+                <img src="drawable/logo.png" alt="logo" class="footer-logo" />
+                <p style="font-size: 15px; color: var(--el-text-color-regular)">
+                    Copyright © 2024 丁思铭 团队 保留所有权利。
+                </p>
+                <p style="margin-top: 0; font-size: 15px; color: var(--el-text-color-regular)">
+                    *所有素材仅供网页学习交流使用
+                </p>
+            </div>
+            <div class="footer-divide" style="width: 200px"></div>
+            <div class="right-footer">
+                <div class="links">
+                    <p style="font-size: 20px; font-weight: 600; color: var(--el-text-color-primary);">相关链接</p>
+                    <a href="http://www.dhbwg.org.cn/" target="_blank">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">敦煌市博物馆</p>
+                    </a>
+                    <a href="https://www.mgk.org.cn/" target="_blank">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">莫高窟预约网</p>
+                    </a>
+                    <a href="https://www.e-dunhuang.com/" target="_blank">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">数字敦煌</p>
+                    </a>
+                    <a href="https://www.amap.com/" target="_blank">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">高德地图</p>
+                    </a>
+                    <a href="https://www.caiyunapp.com/" target="_blank">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">彩云天气</p>
+                    </a>
+                </div>
+                <div class="links about" style="margin-left: 200px">
+                    <p style="font-size: 20px; font-weight: 600; color: var(--el-text-color-primary);">关于我们</p>
+                    <a href="javascript:void(0)" onclick="warnTip('丁思铭网站设计')">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">丁思铭网站设计</p>
+                    </a>
+                    <a href="javascript:void(0)">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">团队成员</p>
+                    </a>
+                    <a href="javascript:void(0)">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);">联系我们</p>
+                    </a>
+                    <a href="https://chatai.dingsm.top" target="_blank">
+                        <p style="font-size: 15px; color: var(--el-text-color-regular);;">ChatAI</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>

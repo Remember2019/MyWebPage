@@ -1,10 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>乐舞敦煌</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="author" content="www.dingsm.top, Dimsoft有限公司">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles.css">
+    <!-- 引入 Element Plus 暗黑主题 -->
+    <link rel="stylesheet" href="src/element-plus/index.css"/>
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/dark/css-vars.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/index.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/display.css">
+    <!-- 引入 Element Plus 和 Vue 3 -->
+    <script src="src/vue@3/vue.global.js"></script>
+    <script src="src/element-plus/index.full.js"></script>
+    <script src="src/@element-plus/icons-vue/index.iife.min.js"></script>
+    <script src="assets/script.js"></script>
+    <style>
+        .menu-options > li.current-page:after {
+            content: '';
+            display: block;
+            border-bottom: 2px solid var(--el-text-color-primary) ;
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
 
+<body>
+<div id="app">
+    <div class="menus">
+        <div class="logo" style="width: 230px">
+            <a href="index.html">
+                <img src="drawable/logo.svg" alt="Logo">
+            </a>
+        </div>
+        <div id="sidebar" class="menu-nav" style="width:55%;">
+            <i id="close_sidebar_btn" onclick="hideSidebar()" style="cursor: pointer">
+                <svg preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                    <clipPath id="clip1_7798">
+                        <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                    </clipPath>
+                    <g clip-path="url(#clip1_7798)">
+                        <path d="M6 18L18 6M6 6L18 18" stroke=var(--el-text-color-primary) stroke-width="2.000000" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+            </i>
+            <ul class="menu-options" style="width:100%;">
+                <li><a href="zhenshang.html">臻赏</a></li>
+                <li><a href="studies.html">研究</a></li>
+                <li><a href="diancang.html">典藏</a></li>
+                <li class="current-page"><a href="#">文创</a></li>
+                <li><a href="visit.html">游览</a></li>
+            </ul>
+        </div>
+        <div class="menu-right">
+            <div class="icons" style="width: 45%">
+                <a href="javascript:void(0)" class="icon" onclick="successTip('收藏')">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                        <clipPath id="clip1_7738">
+                            <rect width="24.000000" height="24.000000" fill=var(--el-bg-color) />
+                        </clipPath>
+                        <g clip-path="url(#clip1_7738)">
+                            <path
+                                    d="M4.31802 6.31802C6.07538 4.56067 8.92462 4.56067 10.682 6.31802L12.0001 7.63608L13.318 6.31802C15.0754 4.56067 17.9246 4.56067 19.682 6.31802C21.4393 8.07538 21.4393 10.9246 19.682 12.682L12.0001 20.364L4.31802 12.682C2.56067 10.9246 2.56067 8.07538 4.31802 6.31802Z"
+                                    stroke=var(--el-text-color-primary)
+                                    stroke-width="2.000000"
+                                    stroke-linejoin="round">
+                            </path>
+                        </g>
+                    </svg>
+                </a>
+                <a href="wenchuang.html" class="icon">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                        <clipPath id="clip1_7932">
+                            <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                        </clipPath>
+                        <g clip-path="url(#clip1_7932)">
+                            <path
+                                    d="M3 3L5 3L5.4 5L7 13M17 17L5.41422 17C4.52331 17 4.07714 15.9229 4.70711 15.2929L7 13L17 13L21 5L5.4 5M17 21C15.8954 21 15 20.1046 15 19C15 17.8954 15.8954 17 17 17C18.1046 17 19 17.8954 19 19C19 20.1046 18.1046 21 17 21ZM7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19C9 20.1046 8.10457 21 7 21Z"
+                                    stroke=var(--el-text-color-primary)
+                                    stroke-width="2.000000"
+                                    stroke-linejoin="round">
+                            </path>
+                        </g>
+                    </svg>
+                </a>
+                <a href="javascript:void(0)" class="icon" onclick="showLanguageMenu()">
+                    <svg preserveAspectRatio="xMidYMid meet"
+                         viewBox="0 0 24 24" width="1.6em" height="1.6em"
+                         data-v-12008bb2="">
+                        <path fill=var(--el-text-color-primary)
+                              d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+            <div class="menu-divider"></div>
+            <div class="user-info" style="width: 55%">
+                <a href="./login/login.html" target="_blank">
+                    <div class="user-info-icon" style="border-radius: 100%; overflow: hidden">
+                        <img src="drawable/user-head.webp" alt="用户" style="width: auto; height: 100%;">
+                    </div>
+                    <div class="user-info-text" style="margin-left: 15px">
+                        <p>Remember2023</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar-toggle" style="cursor: pointer">
+            <a onclick="showSidebar()">
+                <svg preserveAspectRatio="xMidYMid meet"
+                     viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
+                    <clipPath id="clip1_7666">
+                        <rect width="24.000000" height="24.000000" fill=var(--el-bg-color)/>
+                    </clipPath>
+                    <g clip-path="url(#clip1_7666)">
+                        <path d="M4 6L20 6M4 12L20 12M4 18L20 18" stroke=var(--el-text-color-primary) stroke-width="2.000000" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div class="wenchuang-banner">
+        <div class="banner-title">
+            <h3>乐舞敦煌 ╳ 敦煌博物馆</h3>
+        </div>
+        <div class="wenchuang-bg">
+            <img src="drawable/wenchuang-pics/banner.jpg" alt="">
+            <div style="background-color: rgba(0,0,0,.3);" class="img-overlay"></div>
+        </div>
+    </div>
+    <div class="wenchuang-body">
+        <h1>精选文创</h1>
+        <div class="product-grid">
+            <div class="product-card" v-for="product in products" :key="product.id">
+                <div class="product-image" :style="{ backgroundImage: 'url(' + product.image + ')' }"></div>
+                <div class="product-info">
+                    <div class="title">
+                        <h3 class="product-name">{{ product.name }}</h3>
+                        <p class="product-price">{{ product.price }}</p>
+                    </div>
+                    <div class="product-actions">
+                        <a href="javascript:void(0)" class="icon" onclick="successTip('收藏')">
+                            <svg preserveAspectRatio="xMidYMid meet"
+                                 viewBox="0 0 24 24" width="1.8em" height="1.8em" fill="#EE5858">
+                                <clipPath id="clip1_7738">
+                                    <rect width="24.000000" height="24.000000" fill=none />
+                                </clipPath>
+                                <g clip-path="url(#clip1_7738)">
+                                    <path
+                                            d="M4.31802 6.31802C6.07538 4.56067 8.92462 4.56067 10.682 6.31802L12.0001 7.63608L13.318 6.31802C15.0754 4.56067 17.9246 4.56067 19.682 6.31802C21.4393 8.07538 21.4393 10.9246 19.682 12.682L12.0001 20.364L4.31802 12.682C2.56067 10.9246 2.56067 8.07538 4.31802 6.31802Z"
+                                            stroke=none
+                                            stroke-width="2.000000"
+                                            stroke-linejoin="round">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>*以上商品素材，仅供网页学习交流使用，本站不提供购买服务。</p>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="left-footer">
+            <img src="drawable/logo.png" alt="logo" class="footer-logo" />
+            <p style="font-size: 15px; color: var(--el-text-color-regular)">
+                Copyright © 2024 丁思铭 团队 保留所有权利。
+            </p>
+            <p style="margin-top: 0; font-size: 15px; color: var(--el-text-color-regular)">
+                *所有素材仅供网页学习交流使用
+            </p>
+        </div>
+        <div class="footer-divide" style="width: 200px"></div>
+        <div class="right-footer">
+            <div class="links">
+                <p style="font-size: 20px; font-weight: 600; color: var(--el-text-color-primary);">相关链接</p>
+                <a href="http://www.dhbwg.org.cn/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">敦煌市博物馆</p>
+                </a>
+                <a href="https://www.mgk.org.cn/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">莫高窟预约网</p>
+                </a>
+                <a href="https://www.e-dunhuang.com/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">数字敦煌</p>
+                </a>
+                <a href="https://www.amap.com/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">高德地图</p>
+                </a>
+                <a href="https://www.caiyunapp.com/" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">彩云天气</p>
+                </a>
+            </div>
+            <div class="links about" style="margin-left: 200px">
+                <p style="font-size: 20px; font-weight: 600; color: var(--el-text-color-primary);">关于我们</p>
+                <a href="javascript:void(0)" onclick="warnTip('丁思铭网站设计')">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">丁思铭网站设计</p>
+                </a>
+                <a href="about.html">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">团队成员</p>
+                </a>
+                <a href="about.html">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);">联系我们</p>
+                </a>
+                <a href="https://chatai.dingsm.top" target="_blank">
+                    <p style="font-size: 15px; color: var(--el-text-color-regular);;">ChatAI</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    const { ref, reactive } = Vue;
+    const { ElForm, ElInput, ElMessage, ElCarousel, ElSkeleton, ElDrawer, ElResult } = ElementPlus;
+    const { CircleCloseFilled, Close, Menu, Search } = ElementPlusIconsVue;
+    const errorTip = (content) => {
+        ElMessage.error(content)
+    }
+    const warnTip = (content) => {
+        ElMessage({
+            message: content,
+            type: 'warning',
+        })
+    }
+    const successTip = (content) => {
+        ElMessage({
+            message: content,
+            type: 'success',
+        })
+    }
+
+    const App = {
+        setup() {
+            const visible = ref(false)
+            const input = ref('')
+            const form = reactive({
+                name: '',
+                email: '',
+            })
+            const products = [
+                // 这里是商品数据，每个商品包含id、名称、图片和价格
+                { id: 1, name: '再创手机壳', image: 'drawable/wenchuang-pics/image1.jpeg', price: '¥49' },
+                { id: 2, name: '再创滑板(街舞3联名)', image: 'drawable/wenchuang-pics/image2.jpeg', price: '¥439' },
+                { id: 3, name: '再创T恤黑', image: 'drawable/wenchuang-pics/image3.jpeg', price: '¥158' },
+                { id: 4, name: '再创T恤白', image: 'drawable/wenchuang-pics/image4.jpeg', price: '¥158' },
+                { id: 5, name: '文件夹', image: 'drawable/wenchuang-pics/image5.jpeg', price: '¥13.3' },
+                { id: 6, name: '纹样胶带', image: 'drawable/wenchuang-pics/image6.jpeg', price: '¥18.8' },
+                { id: 7, name: '纹样滑板', image: 'drawable/wenchuang-pics/image7.jpeg', price: '¥439' },
+                { id: 8, name: '九色鹿马克杯', image: 'drawable/wenchuang-pics/image8.jpeg', price: '¥98' },
+                { id: 9, name: '九色鹿滑板', image: 'drawable/wenchuang-pics/image9.jpeg', price: '¥439' },
+                { id: 10, name: '九色鹿胶带', image: 'drawable/wenchuang-pics/image10.jpeg', price: '¥13.3' },
+                { id: 11, name: '九色鹿丝巾', image: 'drawable/wenchuang-pics/image11.jpeg', price: '¥188' },
+                { id: 12, name: '九色鹿帆布袋', image: 'drawable/wenchuang-pics/image12.jpeg', price: '¥118' },
+                { id: 13, name: '九色鹿T恤黑', image: 'drawable/wenchuang-pics/image13.jpeg', price: '¥198' },
+                { id: 14, name: '九色鹿折扇', image: 'drawable/wenchuang-pics/image14.jpeg', price: '¥69' },
+                { id: 15, name: '金属钥匙扣', image: 'drawable/wenchuang-pics/image15.jpeg', price: '¥39.9' },
+                { id: 16, name: '伎乐天记事本', image: 'drawable/wenchuang-pics/image16.jpeg', price: '¥39.9' },
+                { id: 17, name: '极乐防水鼠标垫', image: 'drawable/wenchuang-pics/image17.jpeg', price: '¥79' },
+                { id: 18, name: '极乐指纹笔记本', image: 'drawable/wenchuang-pics/image18.jpeg', price: '¥639' },
+                { id: 19, name: '佛系帆布袋', image: 'drawable/wenchuang-pics/image19.jpeg', price: '¥118' },
+                { id: 20, name: '飞天T恤', image: 'drawable/wenchuang-pics/image20.jpeg', price: '¥158' }
+            ]
+            const onSubmit = () => {
+                successTip('提交成功')
+                document.getElementById('form-main').style.display = 'none';
+                document.getElementById('form-result').style.cssText = 'display: flex !important';
+            }
+            window.visible = visible
+            window.input = input
+            window.successTip = successTip
+            window.warnTip = warnTip
+            window.errorTip = errorTip
+            return {
+                form,
+                visible,
+                input,
+                products,
+                onSubmit,
+                errorTip,
+                warnTip,
+                successTip,
+            }
+        },
+        components: { CircleCloseFilled, Close, Menu, ElSkeleton, Search, ElForm, ElInput, ElResult },
+        methods: {
+            submit_message() {
+                submit();
+            }
+        }
+    }
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
 </body>
 </html>

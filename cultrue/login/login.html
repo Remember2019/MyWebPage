@@ -43,9 +43,9 @@
             const pwd = document.getElementById('pwd').value;
             if(user_name==='admin'&&pwd==='123456') {
                 alert('登录成功')
-                window.location.href = '../index.html';
+                window.close();
             } else {
-                alert("用户名或密码错误，请重试！")
+                alert("用户名或密码错误，请重试！(用户名为admin，密码为123456)")
             }
         }
     </script>

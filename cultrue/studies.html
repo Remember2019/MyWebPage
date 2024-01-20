@@ -77,7 +77,7 @@
             </g>
           </svg>
         </a>
-        <a href="javascript:void(0)" class="icon" onclick="successTip('商城')">
+        <a href="wenchuang.html" class="icon">
           <svg preserveAspectRatio="xMidYMid meet"
                viewBox="0 0 24 24" width="1.6em" height="1.6em" fill="none">
             <clipPath id="clip1_7932">
@@ -132,44 +132,90 @@
   <div class="studies-banner">
     <p>我国是一个多民族国家，在漫长的历史发展中，各民族相互依存、休戚与共、水乳交融，繁衍生息在这片广袤的大地上，形成了中华民族多元一体的格局。回鹘就是这些民族中的一员，并在历史文献和书籍中留下了惊鸿一瞥，今天的维吾尔族和裕固族就是古代回鹘的直系后裔，在我国历史演变中起到过非常重要的作用，尤其是回鹘文文献记载的重要历史文化片段，填补了很多我国少数民族历史研究的空白。带着对神秘回鹘的无限遐想，记者采访了杨富学博士。</p>
     <div class="studies-bg">
-      <img src="drawable/studies-pics/yangfuxue.jpg" alt="">
+      <img src="drawable/studies-pics/building.jpeg" alt="">
     </div>
   </div>
-  <div class="commit-form">
-    <el-form :model="form" lable-width="120px">
-      <el-form-item label="您的姓名" prop="name">
-        <el-input v-model="form.name"></el-input>
-      </el-form-item>
-      <el-form-item label="您的邮箱" prop="email">
-        <el-input v-model="form.email" type="email"></el-input>
-      </el-form-item>
-      <el-form-item label="您的电话" prop="phone">
-        <el-input v-model="form.phone" type="phone"></el-input>
-      </el-form-item>
-      <el-form-item label="空闲时间" prop="availableTime">
-        <el-col :span="11">
-          <el-date-picker
-                  v-model="form.date"
-                  type="daterange"
-                  range-separator="至"
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期"
-                  style="width: 100%"
-          ></el-date-picker>
-        </el-col>
-      </el-form-item>
-      <el-form-item label="是否匿名" prop="no-name">
-        <el-switch v-model="form.delivery"></el-switch>
-      </el-form-item>
-      <el-form-item label="请您留言" prop="desc">
-        <el-input v-model="form.desc" type="textarea"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">提交</el-button>
-      </el-form-item>
-    </el-form>
+  <div class="studies-body">
+    <div class="study-cards">
+      <div onclick="window.open('https://mp.weixin.qq.com/s?__biz=MzIyNjAxNTU5OA==&mid=2663034455&idx=6&sn=2f8302d92b4deb19bdcac05280fb6424','_blank')" class="card">
+        <img src="drawable/studies-pics/yangfuxue.jpg" alt="" />
+        <div style="border-radius: 15px" class="img-overlay"></div>
+        <div class="card-text">
+          <h3>杨富学</h3>
+          <p>敦煌学家：择一事，终一生。</p>
+        </div>
+      </div>
+      <div onclick="window.open('https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=18168396673078405896','_blank')" class="card">
+        <img src="drawable/studies-pics/fanjinshi.jpg" alt="" />
+        <div style="border-radius: 15px" class="img-overlay"></div>
+        <div class="card-text">
+          <h3>樊锦诗</h3>
+          <p>我心归处是敦煌。</p>
+        </div>
+      </div>
+    </div>
+    <div class="interview-content">
+      <h1>采访视频</h1>
+      <div class="video-container">
+        <div class="video-card">
+          <div class="video-card-video">
+            <video src="drawable/studies-pics/1.mp4" controls></video>
+          </div>
+          <div class="video-card-text">
+            <p>谭晶，备受瞩目的“国家队选手”，参与了一场引人注目的敦煌国风访谈。在访谈中，她深情分享了自己与敦煌的独特故事，她回顾了个人音乐成长历程，强调了对传统国风音乐的热爱，以敏感的音乐表达，将对敦煌的深情理解融入创作，致敬这一中国传统文化瑰宝。通过音乐，她将敦煌的风采和文化内涵传递给观众，展现了对文化遗产的独特解读。这次访谈不仅为观众揭示了谭晶音乐情感的更多层次，也展现了她在传统文化探索中的深刻理解和独特创意。谭晶通过访谈，以独有的音乐语言，为敦煌注入了新的活力，赋予这一中华文明瑰宝更多时代的意义。</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-card-video">
+            <video src="drawable/studies-pics/2.mp4" controls></video>
+          </div>
+          <div class="video-card-text">
+            <p>《似是故人来》第三期在中国网、江苏卫视、爱奇艺同步播出，揭示了敦煌艺术保持青春活力的秘密。历经千年沧桑，莫高窟壁画成为文化瑰宝，描绘了张骞、归义军张议潮、外国王子等元素，勾勒出千年历史的绚丽画卷。敦煌不仅见证历史，更是文化创新者。在过去千年中，它将外来文化与本土文化融合，为信仰注入时代精神。敦煌的守护者们，如常书鸿和樊锦诗，热血进行洞窟修复工作，将艺术之宝展示给世人。敦煌，如同鲁迅所言，“向外，在摄取异域的营养；向内，在挖掘自己的魂灵”。这座古老城市在一千多年的历史中不仅见证了变迁，更为艺术与文化的交融贡献了永葆青春的力量。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="commit-form">
+      <el-form id="form-main" :model="form" lable-width="120px">
+        <h3>您有话说？</h3>
+        <el-form-item label="您的姓名" prop="name">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item label="您的邮箱" prop="email">
+          <el-input v-model="form.email" type="email"></el-input>
+        </el-form-item>
+        <el-form-item label="您的电话" prop="phone">
+          <el-input v-model="form.phone" type="phone"></el-input>
+        </el-form-item>
+        <el-form-item label="空闲时间" prop="availableTime">
+          <el-col :span="11">
+            <el-date-picker
+                    v-model="form.date"
+                    type="daterange"
+                    range-separator="至"
+                    start-placeholder="开始日期"
+                    end-placeholder="结束日期"
+                    style="width: 100%"
+            ></el-date-picker>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="是否匿名" prop="no-name">
+          <el-switch v-model="form.delivery"></el-switch>
+        </el-form-item>
+        <el-form-item label="请您留言" prop="desc">
+          <el-input v-model="form.desc" type="textarea"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">提交</el-button>
+        </el-form-item>
+      </el-form>
+      <el-result id="form-result"
+              icon="success"
+              title="提交成功"
+              sub-title="感谢您的留言，我们会尽快与您联系。"
+      ></el-result>
+    </div>
   </div>
-
   <div id="chat-dialog">
     <el-dialog v-model="visible" title="ChatGPT" modal-class="chat-bg"
                style="border-radius: 10px">
@@ -197,7 +243,10 @@
     <div class="left-footer">
       <img src="drawable/logo.png" alt="logo" class="footer-logo" />
       <p style="font-size: 15px; color: var(--el-text-color-regular)">
-        Copyright © 2024 Dingsm Inc. 保留所有权利。
+        Copyright © 2024 丁思铭 团队 保留所有权利。
+      </p>
+      <p style="margin-top: 0; font-size: 15px; color: var(--el-text-color-regular)">
+        *所有素材仅供网页学习交流使用
       </p>
     </div>
     <div class="footer-divide" style="width: 200px"></div>
@@ -222,16 +271,16 @@
       </div>
       <div class="links about" style="margin-left: 200px">
         <p style="font-size: 20px; font-weight: 600; color: var(--el-text-color-primary);">关于我们</p>
-        <a href="#" onclick="warnTip('丁思铭网站设计')">
+        <a href="javascript:void(0)" onclick="warnTip('丁思铭网站设计')">
           <p style="font-size: 15px; color: var(--el-text-color-regular);">丁思铭网站设计</p>
         </a>
-        <a href="#" onclick="warnTip('三组创意')">
-          <p style="font-size: 15px; color: var(--el-text-color-regular);">三组创意</p>
+        <a href="about.html">
+          <p style="font-size: 15px; color: var(--el-text-color-regular);">团队成员</p>
         </a>
-        <a href="#" onclick="warnTip('联系电话')">
-          <p style="font-size: 15px; color: var(--el-text-color-regular);">联系电话</p>
+        <a href="about.html">
+          <p style="font-size: 15px; color: var(--el-text-color-regular);">联系我们</p>
         </a>
-        <a href="https://chatai.dingsm.top" onclick="warnTip('ChatAI')" target="_blank">
+        <a href="https://chatai.dingsm.top" target="_blank">
           <p style="font-size: 15px; color: var(--el-text-color-regular);;">ChatAI</p>
         </a>
       </div>
@@ -240,7 +289,7 @@
 </footer>
 <script>
   const { ref, reactive } = Vue;
-  const { ElForm, ElInput, ElMessage, ElCarousel, ElSkeleton, ElDrawer } = ElementPlus;
+  const { ElForm, ElInput, ElMessage, ElCarousel, ElSkeleton, ElDrawer, ElResult } = ElementPlus;
   const { CircleCloseFilled, Close, Menu, Search } = ElementPlusIconsVue;
   const errorTip = (content) => {
     ElMessage.error(content)
@@ -267,7 +316,9 @@
         email: '',
       })
       const onSubmit = () => {
-        console.log('submit!')
+        successTip('提交成功')
+        document.getElementById('form-main').style.display = 'none';
+        document.getElementById('form-result').style.cssText = 'display: flex !important';
       }
       window.visible = visible
       window.input = input
@@ -284,7 +335,7 @@
         successTip,
       }
     },
-    components: { CircleCloseFilled, Close, Menu, ElSkeleton, Search, ElForm, ElInput },
+    components: { CircleCloseFilled, Close, Menu, ElSkeleton, Search, ElForm, ElInput, ElResult },
     methods: {
       submit_message() {
         submit();
