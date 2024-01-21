@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #background {
+            width: 2611px;
+            height: 1029px;
+            background: #256b51;
+            position: relative;
+            display: none;
+        }
+        .fix-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        #background p {
+            position: absolute;
+            left: 1101px;
+            top: 382px;
+            color: white;
+            margin: 0 !important;
+            line-height: 100%;
+            letter-spacing: -1.1px;
+            font-family: "Alibaba PuHuiTi 3.0", system-ui;
+            font-size: 220px;
+            font-weight: bold;
+        }
+    </style>
+    <script src="html2canvas.min.js"></script>
+</head>
+<body>
+    <h1>牌照图片模拟生成</h1>
+    <p>先输入牌号生成，然后再下载图片</p>
+    <p>建议输入000000～099999和300000～499999之间的牌号，因为其余号码的背景颜色未确认</p>
+    <input type="number" placeholder="6位牌号" id="card_no" />
+    <button onclick="makeCard()">制作车牌</button>
+    <button onclick="getIMG()">下载图片</button>
+    <div id="background">
+        <img class="fix-text" src="card-fix-text.png" alt="" />
+        <p id="number">SDNU301002</p>
+    </div>
+    <script>
+        function makeCard() {
+            var card_no = document.getElementById("card_no").value;
+            if( card_no < 100000 ) {
+                document.getElementById("background").style.background = "#2860c4"
+            } else if ( card_no < 300000 ) {
+                document.getElementById("background").style.background = "#f6d70d"
+            } else if ( card_no < 500000 ) {
+                document.getElementById("background").style.background = "#256b51"
+            } else {
+                document.getElementById("background").style.background = "#be2944"
+            }
+            document.getElementById("number").innerText = `SDNU${card_no}`;
+            document.getElementById("background").style.display = "block";
+        }
+        function getIMG() {
+            html2canvas(document.querySelector("#background")).then( canvas => {
+                // 这里的canvas就是转换后的图片
+                // 你可以将其插入到页面中，或者下载下来
+                //document.body.appendChild(canvas); // 插入到页面中
+                // 或者下载
+                var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                var link = document.createElement('a');
+                link.download = 'background-image.png';
+                link.href = image;
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
