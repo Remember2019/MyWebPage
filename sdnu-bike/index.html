@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>牌照</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <!-- 引入 Element Plus 暗黑主题 -->
+    <link rel="stylesheet" href="src/element-plus/index.css"/>
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/dark/css-vars.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/index.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/display.css">
+    <!-- 引入 Element Plus 和 Vue 3 -->
+    <script src="src/vue@3/vue.global.js"></script>
+    <script src="src/element-plus/index.full.js"></script>
+    <script src="src/@element-plus/icons-vue/index.iife.min.js"></script>
+    <script src="src/html2canvas.min.js"></script>
     <style>
         @font-face {
             font-family: "Alibaba PuHuiTi 3.0";
-            src: url("./AlibabaPuHuiTi-3-85-Bold.woff2");
+            src: url("./font/AlibabaPuHuiTi-3-85-Bold.woff2");
         }
+
+        #app {
+            margin: 10px;
+        }
+
         #background {
             width: 2611px;
             height: 1029px;
@@ -15,6 +31,7 @@
             position: relative;
             display: none;
         }
+
         .fix-text {
             position: absolute;
             bottom: 0;
@@ -31,62 +48,183 @@
             font-family: "Alibaba PuHuiTi 3.0", system-ui;
             font-size: 220px;
         }
+        .title-container h1 {
+            font-size: 35px;
+        }
+        .title-container p {
+            font-size: 18px;
+        }
+        .input-container {
+            display: flex;
+            flex-direction: row;
+            height: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     </style>
-    <script src="html2canvas.min.js"></script>
 </head>
-<body>
-    <h1>牌照图片模拟生成</h1>
-    <p>建议输入000000～099999和300000～499999之间的牌号</p>
-    <p>因为其余号码的背景颜色未确认</p>
-    <input type="number" placeholder="6位牌号" id="card_no" />
-    <button id="make-btn" onclick="makeCard()">1.制作车牌</button>
-    <button id="down-btn" onclick="getIMG()" disabled>2.生成图片</button>
-    <button id="get-btn" onclick="downIMG()" disabled>3.下载图片(如果没弹出下载框可以尝试长按保存)</button>
-    <button id="renew-btn" onclick="window.location.reload()">重新加载</button>
-    <div id="background">
-        <img class="fix-text" src="card-fix-text.png" alt="" />
-        <p id="number">SDNU301002</p>
-    </div>
-    <script>
-        function makeCard() {
-            var card_no = document.getElementById("card_no").value;
-            if( card_no < 100000 ) {
-                document.getElementById("background").style.background = "#2860c4"
-            } else if ( card_no < 300000 ) {
-                document.getElementById("background").style.background = "#f6d70d"
-            } else if ( card_no < 500000 ) {
-                document.getElementById("background").style.background = "#256b51"
-            } else {
-                document.getElementById("background").style.background = "#be2944"
-            }
-            document.getElementById("number").innerText = `SDNU${card_no}`;
-            document.getElementById("background").style.display = "block";
-            document.getElementById("down-btn").disabled = false;
-        }
-        function getIMG() {
-            html2canvas(document.querySelector("#background")).then( canvas => {
-                document.getElementById("down-btn").disabled = true;
-                document.getElementById("make-btn").disabled = true;
-                document.getElementById("get-btn").disabled = false;
-                canvas.id = "myCanvas";
-                document.body.appendChild(canvas); // 插入到页面中
-                document.getElementById("background").style.display = "none";
-            });
-        }
 
-        function downIMG() {
-            document.getElementById("get-btn").disabled = true;
-            document.getElementById("myCanvas").style.display = "none";
-            var canvas = document.getElementById("myCanvas");
-            var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-            var img = document.createElement("img");
-            img.src = image;
-            document.body.appendChild(img);
-            var link = document.createElement('a');
-            link.download = 'my-card.png';
-            link.href = image;
-            link.click();
+<body style="overflow-x: hidden !important;">
+<div id="app">
+    <div v-loading="loading">
+        <div class="title-container">
+            <h1>牌照图片模拟生成</h1>
+            <el-descriptions direction="vertical" border>
+                <el-descriptions-item label="蓝牌">
+                    <el-tag>000000</el-tag>
+                    -
+                    <el-tag>099999</el-tag>
+                </el-descriptions-item>
+                <el-descriptions-item label="黄牌">
+                    <el-tag>100000</el-tag>
+                    -
+                    <el-tag>299999</el-tag>
+                </el-descriptions-item>
+                <el-descriptions-item label="绿牌">
+                    <el-tag>300000</el-tag>
+                    -
+                    <el-tag>499999</el-tag>
+                </el-descriptions-item>
+                <el-descriptions-item label="红牌">
+                    <el-tag>500000</el-tag>
+                    -
+                    <el-tag>699999</el-tag>
+                </el-descriptions-item>
+            </el-descriptions>
+        </div>
+        <el-steps :active="active" space="200px" finish-status="success" style="margin-top: 10px">
+            <el-step title="制作车牌" :description=`SDNU${input}`></el-step>
+            <el-step title="生成预览" description="合并牌号与底板"></el-step>
+            <el-step title="下载图片" description="长按图片也可保存"></el-step>
+        </el-steps>
+        <div class="input-container">
+            <el-input type="number" style="width: 200px" placeholder="请输入6位牌号" id="card_no"
+                      v-model="input"></el-input>
+            <el-button style="margin-left: 10px" @click="ok">确认</el-button>
+        </div>
+        <div class="download-container" style="display: none">
+            <el-button style="margin-top: 10px" type="primary" @click="download">下载图片</el-button>
+        </div>
+        <div class="renew-container" style="display: none">
+            <el-button style="margin-top: 10px" type="info" @click="renew">重新开始</el-button>
+        </div>
+
+        <div id="background">
+            <img class="fix-text" src="assests/card-fix-text.png" alt=""/>
+            <p id="number">SDNU301002</p>
+        </div>
+    </div>
+</div>
+<script>
+    function makeCard() {
+        active.value += 1;
+        loading.value = true;
+        var card_no = document.getElementById("card_no").value;
+        if (card_no < 100000) {
+            document.getElementById("background").style.background = "#2860c4"
+        } else if (card_no < 300000) {
+            document.getElementById("background").style.background = "#f6d70d"
+        } else if (card_no < 500000) {
+            document.getElementById("background").style.background = "#256b51"
+        } else {
+            document.getElementById("background").style.background = "#be2944"
         }
-    </script>
+        document.getElementById("number").innerText = `SDNU${card_no}`;
+        document.getElementById("background").style.display = "block";
+        getIMG();
+    }
+
+    function getIMG() {
+        html2canvas(document.querySelector("#background")).then(canvas => {
+            loading.value = true;
+            canvas.id = "myCanvas";
+            document.body.appendChild(canvas); // 插入到页面中
+            document.getElementById("background").style.display = "none";
+            active.value += 1;
+            document.querySelector('.download-container').style.display = 'block'
+            loading.value = false;
+            successTip('牌照已生成 请点击下载')
+        });
+    }
+
+    function downIMG() {
+        loading.value = true;
+        document.getElementById("myCanvas").style.display = "none";
+        var canvas = document.getElementById("myCanvas");
+        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        var img = document.createElement("img");
+        img.src = image;
+        document.body.appendChild(img);
+        var link = document.createElement('a');
+        link.download = 'my-card.png';
+        link.href = image;
+        link.click();
+        active.value += 1;
+        warnTip('如果无法下载，请长按图片保存')
+        document.querySelector('.download-container').style.display = 'none'
+        document.querySelector('.renew-container').style.display = 'block'
+        loading.value = false;
+    }
+</script>
+<script>
+    const {ref} = Vue;
+    const { ElInput, ElMessage, ElSkeleton, ElSteps, ElTag, ElDescriptions } = ElementPlus;
+    const { CircleCloseFilled, Close, Menu } = ElementPlusIconsVue;
+    const errorTip = (content) => {
+        ElMessage.error(content)
+    }
+    const warnTip = (content) => {
+        ElMessage({
+            message: content,
+            type: 'warning',
+        })
+    }
+    const successTip = (content) => {
+        ElMessage({
+            message: content,
+            type: 'success',
+        })
+    }
+
+    const App = {
+        setup() {
+            const active = ref(0)
+            const input = ref('')
+            const loading = ref(false)
+            window.active = active
+            window.loading = loading
+            window.errorTip = errorTip
+            window.warnTip = warnTip
+            window.successTip = successTip
+            return {
+                active,
+                input,
+                loading,
+                errorTip,
+                warnTip,
+                successTip,
+            }
+        },
+        components: {CircleCloseFilled, Close, Menu, ElSkeleton, ElSteps, ElTag, ElDescriptions },
+        methods: {
+            next() {
+                this.active ++;
+            },
+            ok() {
+                makeCard();
+                document.querySelector('.input-container').style.display = 'none'
+            },
+            download() {
+              downIMG();
+            },
+            renew () {
+                window.location.reload();
+            }
+        }
+    }
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
 </body>
 </html>
