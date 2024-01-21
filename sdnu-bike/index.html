@@ -36,11 +36,13 @@
 </head>
 <body>
     <h1>牌照图片模拟生成</h1>
-    <p>先输入牌号生成，然后再下载图片</p>
-    <p>建议输入000000～099999和300000～499999之间的牌号，因为其余号码的背景颜色未确认</p>
+    <p>建议输入000000～099999和300000～499999之间的牌号</p>
+    <p>因为其余号码的背景颜色未确认</p>
     <input type="number" placeholder="6位牌号" id="card_no" />
-    <button onclick="makeCard()">制作车牌</button>
-    <button onclick="getIMG()">下载图片</button>
+    <button id="make-btn" onclick="makeCard()">1.制作车牌</button>
+    <button id="down-btn" onclick="getIMG()" disabled>2.生成图片</button>
+    <button id="get-btn" onclick="downIMG()" disabled>3.下载图片(如果没弹出下载框可以尝试长按保存)</button>
+    <button id="renew-btn" onclick="window.location.reload()">重新加载</button>
     <div id="background">
         <img class="fix-text" src="card-fix-text.png" alt="" />
         <p id="number">SDNU301002</p>
@@ -59,20 +61,31 @@
             }
             document.getElementById("number").innerText = `SDNU${card_no}`;
             document.getElementById("background").style.display = "block";
+            document.getElementById("down-btn").disabled = false;
         }
         function getIMG() {
             html2canvas(document.querySelector("#background")).then( canvas => {
-                // 这里的canvas就是转换后的图片
-                // 你可以将其插入到页面中，或者下载下来
+                document.getElementById("down-btn").disabled = true;
+                document.getElementById("make-btn").disabled = true;
+                document.getElementById("get-btn").disabled = false;
+                canvas.id = "myCanvas";
                 document.body.appendChild(canvas); // 插入到页面中
-                //document.getElementById("background").style.display = "none";
-                // 或者下载
-                var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-                var link = document.createElement('a');
-                link.download = 'background-image.png';
-                link.href = image;
-                link.click();
+                document.getElementById("background").style.display = "none";
             });
+        }
+
+        function downIMG() {
+            document.getElementById("get-btn").disabled = true;
+            document.getElementById("myCanvas").style.display = "none";
+            var canvas = document.getElementById("myCanvas");
+            var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            var img = document.createElement("img");
+            img.src = image;
+            document.body.appendChild(img);
+            var link = document.createElement('a');
+            link.download = 'my-card.png';
+            link.href = image;
+            link.click();
         }
     </script>
 </body>
