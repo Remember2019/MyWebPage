@@ -30,7 +30,6 @@
             letter-spacing: -1.1px;
             font-family: "Alibaba PuHuiTi 3.0", system-ui;
             font-size: 220px;
-            font-weight: bold;
         }
     </style>
     <script src="html2canvas.min.js"></script>
@@ -65,7 +64,8 @@
             html2canvas(document.querySelector("#background")).then( canvas => {
                 // 这里的canvas就是转换后的图片
                 // 你可以将其插入到页面中，或者下载下来
-                //document.body.appendChild(canvas); // 插入到页面中
+                document.body.appendChild(canvas); // 插入到页面中
+                document.getElementById("background").style.display = "none";
                 // 或者下载
                 var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
                 var link = document.createElement('a');
