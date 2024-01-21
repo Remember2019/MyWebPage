@@ -1256,6 +1256,7 @@ footer .container {
     width: 600px;
     height: 100px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     border-radius: 50px;
@@ -1264,10 +1265,19 @@ footer .container {
     backdrop-filter: blur(20px);
 }
 
+.wenchuang-banner .banner-title img {
+    position: relative;
+    height: 50%;
+    width: 30%;
+    object-fit: contain;
+}
+
 .wenchuang-banner .banner-title h3 {
     font-family: "方正兰亭黑简体", Inter, system-ui, Avenir, serif;
-    font-size: 45px;
+    font-size: 30px;
     font-weight: lighter;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .wenchuang-body {
