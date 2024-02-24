@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>宿舍电费</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <!-- 引入 Element Plus 暗黑主题 -->
+    <link rel="stylesheet" href="src/element-plus/index.css" />
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/dark/css-vars.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/index.css">
+    <link rel="stylesheet" href="src/element-plus/theme-chalk/display.css">
+    <!-- 引入 Element Plus 和 Vue 3 -->
+    <script src="src/vue@3/vue.global.js"></script>
+    <script src="src/element-plus/index.full.js"></script>
+    <script src="src/@element-plus/icons-vue/index.iife.min.js"></script>
+    <style>
+        body {
+            font-family: system-ui;
+        }
+
+        #app {
+            margin: 10px;
+        }
+
+        h1 {
+            font-size: 35px;
+        }
+
+        p {
+            font-size: 15px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            color: var(--el-text-color-secondary);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pay_input {
+            display: flex;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+        }
+
+        .input-container .el-select {
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body style="overflow-x: hidden !important;">
+    <div id="app">
+        <div v-loading="loading">
+            <div class="container">
+                <h1>宿舍电费快捷充值</h1>
+                <p>本网页调用山东师大自助服务公众号的支付接口，省略其中查询房间的步骤，极大程度提高支付便捷程度。</p>
+                <p>声明：请在充值前后核对电费余额，本平台不会收取您的任何费用，充值状况与山东师大自助服务公众号有关。</p>
+                <div class="input-container">
+                    <el-select id="campus_id" v-model="campus" placeholder="校区" style="width: 180px">
+                        <el-option label="千佛山校区" value="千佛山校区"></el-option>
+                        <el-option label="长清湖校区" value="长清湖校区"></el-option>
+                    </el-select>
+                    <el-select id="building_id" v-model="building" placeholder="楼" filterable style="width: 180px">
+                        <el-option label="1号楼" value="1"></el-option>
+                        <el-option label="2号楼" value="2"></el-option>
+                        <el-option label="3号楼" value="3"></el-option>
+                        <el-option label="4号楼" value="4"></el-option>
+                        <el-option label="5号楼" value="5"></el-option>
+                        <el-option label="6号楼" value="6"></el-option>
+                        <el-option label="7号楼" value="7"></el-option>
+                        <el-option label="8号楼" value="8"></el-option>
+                        <el-option label="9号楼" value="9"></el-option>
+                        <el-option label="10号楼" value="10"></el-option>
+                        <el-option label="11号楼" value="11"></el-option>
+                        <el-option label="12号楼" value="12"></el-option>
+                        <el-option label="13号楼" value="13"></el-option>
+                        <el-option label="14号楼" value="14"></el-option>
+                        <el-option label="15号楼" value="15"></el-option>
+                        <el-option label="16号楼" value="16"></el-option>
+                        <el-option label="17号楼" value="17"></el-option>
+                        <el-option label="18号楼" value="18"></el-option>
+                        <el-option label="19号楼" value="19"></el-option>
+                        <el-option label="20号楼" value="20"></el-option>
+                        <el-option label="21号楼" value="21"></el-option>
+                        <el-option label="22号楼" value="22"></el-option>
+                        <el-option label="23号楼" value="23"></el-option>
+                        <el-option label="24号楼" value="24"></el-option>
+                        <el-option label="25号楼" value="25"></el-option>
+                        <el-option label="26号楼" value="26"></el-option>
+                        <el-option label="27号楼" value="27"></el-option>
+                        <el-option label="28号楼" value="28"></el-option>
+                        <el-option label="29号楼" value="29"></el-option>
+                        <el-option label="30号楼" value="30"></el-option>
+                    </el-select>
+                    <el-select id="room_id" v-model="room" placeholder="房间" filterable style="width: 180px">
+                        <el-option label="101" value="01001"></el-option>
+                        <el-option label="102" value="01002"></el-option>
+                        <el-option label="103" value="01003"></el-option>
+                        <el-option label="104" value="01004"></el-option>
+                        <el-option label="105" value="01005"></el-option>
+                        <el-option label="106" value="01006"></el-option>
+                        <el-option label="107" value="01007"></el-option>
+                        <el-option label="108" value="01008"></el-option>
+                        <el-option label="109" value="01009"></el-option>
+                        <el-option label="110" value="01010"></el-option>
+                        <el-option label="111" value="01011"></el-option>
+                        <el-option label="112" value="01012"></el-option>
+                        <el-option label="113" value="01013"></el-option>
+                        <el-option label="114" value="01014"></el-option>
+                        <el-option label="115" value="01015"></el-option>
+                        <el-option label="116" value="01016"></el-option>
+                        <el-option label="117" value="01017"></el-option>
+                        <el-option label="118" value="01018"></el-option>
+                        <el-option label="119" value="01019"></el-option>
+                        <el-option label="120" value="01020"></el-option>
+                        <el-option label="121" value="01021"></el-option>
+                        <el-option label="122" value="01022"></el-option>
+                        <el-option label="123" value="01023"></el-option>
+                        <el-option label="124" value="01024"></el-option>
+                        <el-option label="125" value="01025"></el-option>
+                        <el-option label="126" value="01026"></el-option>
+                        <el-option label="127" value="01027"></el-option>
+                        <el-option label="128" value="01028"></el-option>
+                        <el-option label="129" value="01029"></el-option>
+                        <el-option label="130" value="01030"></el-option>
+                        <el-option label="131" value="01031"></el-option>
+                        <el-option label="132" value="01032"></el-option>
+                        <el-option label="133" value="01033"></el-option>
+                        <el-option label="134" value="01034"></el-option>
+                        <el-option label="135" value="01035"></el-option>
+                        <el-option label="136" value="01036"></el-option>
+                        <el-option label="137" value="01037"></el-option>
+                        <el-option label="138" value="01038"></el-option>
+                        <el-option label="139" value="01039"></el-option>
+                        <el-option label="140" value="01040"></el-option>
+                        <el-option label="141" value="01041"></el-option>
+                        <el-option label="142" value="01042"></el-option>
+                        <el-option label="143" value="01043"></el-option>
+                        <el-option label="144" value="01044"></el-option>
+                        <el-option label="145" value="01045"></el-option>
+                        <el-option label="146" value="01046"></el-option>
+                        <el-option label="147" value="01047"></el-option>
+                        <el-option label="148" value="01048"></el-option>
+                        <el-option label="149" value="01049"></el-option>
+                        <el-option label="150" value="01050"></el-option>
+                        <el-option label="151" value="01051"></el-option>
+                        <el-option label="152" value="01052"></el-option>
+                        <el-option label="153" value="01053"></el-option>
+                        <el-option label="154" value="01054"></el-option>
+                        <el-option label="155" value="01055"></el-option>
+                        <el-option label="156" value="01056"></el-option>
+                        <el-option label="157" value="01057"></el-option>
+                        <el-option label="158" value="01058"></el-option>
+                        <el-option label="159" value="01059"></el-option>
+                        <el-option label="160" value="01060"></el-option>
+                        <el-option label="201" value="02001"></el-option>
+                        <el-option label="202" value="02002"></el-option>
+                        <el-option label="203" value="02003"></el-option>
+                        <el-option label="204" value="02004"></el-option>
+                        <el-option label="205" value="02005"></el-option>
+                        <el-option label="206" value="02006"></el-option>
+                        <el-option label="207" value="02007"></el-option>
+                        <el-option label="208" value="02008"></el-option>
+                        <el-option label="209" value="02009"></el-option>
+                        <el-option label="210" value="02010"></el-option>
+                        <el-option label="211" value="02011"></el-option>
+                        <el-option label="212" value="02012"></el-option>
+                        <el-option label="213" value="02013"></el-option>
+                        <el-option label="214" value="02014"></el-option>
+                        <el-option label="215" value="02015"></el-option>
+                        <el-option label="216" value="02016"></el-option>
+                        <el-option label="217" value="02017"></el-option>
+                        <el-option label="218" value="02018"></el-option>
+                        <el-option label="219" value="02019"></el-option>
+                        <el-option label="220" value="02020"></el-option>
+                        <el-option label="221" value="02021"></el-option>
+                        <el-option label="222" value="02022"></el-option>
+                        <el-option label="223" value="02023"></el-option>
+                        <el-option label="224" value="02024"></el-option>
+                        <el-option label="225" value="02025"></el-option>
+                        <el-option label="226" value="02026"></el-option>
+                        <el-option label="227" value="02027"></el-option>
+                        <el-option label="228" value="02028"></el-option>
+                        <el-option label="229" value="02029"></el-option>
+                        <el-option label="230" value="02030"></el-option>
+                        <el-option label="231" value="02031"></el-option>
+                        <el-option label="232" value="02032"></el-option>
+                        <el-option label="233" value="02033"></el-option>
+                        <el-option label="234" value="02034"></el-option>
+                        <el-option label="235" value="02035"></el-option>
+                        <el-option label="236" value="02036"></el-option>
+                        <el-option label="237" value="02037"></el-option>
+                        <el-option label="238" value="02038"></el-option>
+                        <el-option label="239" value="02039"></el-option>
+                        <el-option label="240" value="02040"></el-option>
+                        <el-option label="241" value="02041"></el-option>
+                        <el-option label="242" value="02042"></el-option>
+                        <el-option label="243" value="02043"></el-option>
+                        <el-option label="244" value="02044"></el-option>
+                        <el-option label="245" value="02045"></el-option>
+                        <el-option label="246" value="02046"></el-option>
+                        <el-option label="247" value="02047"></el-option>
+                        <el-option label="248" value="02048"></el-option>
+                        <el-option label="249" value="02049"></el-option>
+                        <el-option label="250" value="02050"></el-option>
+                        <el-option label="251" value="02051"></el-option>
+                        <el-option label="252" value="02052"></el-option>
+                        <el-option label="253" value="02053"></el-option>
+                        <el-option label="254" value="02054"></el-option>
+                        <el-option label="255" value="02055"></el-option>
+                        <el-option label="256" value="02056"></el-option>
+                        <el-option label="257" value="02057"></el-option>
+                        <el-option label="258" value="02058"></el-option>
+                        <el-option label="259" value="02059"></el-option>
+                        <el-option label="260" value="02060"></el-option>
+                        <el-option label="301" value="03001"></el-option>
+                        <el-option label="302" value="03002"></el-option>
+                        <el-option label="303" value="03003"></el-option>
+                        <el-option label="304" value="03004"></el-option>
+                        <el-option label="305" value="03005"></el-option>
+                        <el-option label="306" value="03006"></el-option>
+                        <el-option label="307" value="03007"></el-option>
+                        <el-option label="308" value="03008"></el-option>
+                        <el-option label="309" value="03009"></el-option>
+                        <el-option label="310" value="03010"></el-option>
+                        <el-option label="311" value="03011"></el-option>
+                        <el-option label="312" value="03012"></el-option>
+                        <el-option label="313" value="03013"></el-option>
+                        <el-option label="314" value="03014"></el-option>
+                        <el-option label="315" value="03015"></el-option>
+                        <el-option label="316" value="03016"></el-option>
+                        <el-option label="317" value="03017"></el-option>
+                        <el-option label="318" value="03018"></el-option>
+                        <el-option label="319" value="03019"></el-option>
+                        <el-option label="320" value="03020"></el-option>
+                        <el-option label="321" value="03021"></el-option>
+                        <el-option label="322" value="03022"></el-option>
+                        <el-option label="323" value="03023"></el-option>
+                        <el-option label="324" value="03024"></el-option>
+                        <el-option label="325" value="03025"></el-option>
+                        <el-option label="326" value="03026"></el-option>
+                        <el-option label="327" value="03027"></el-option>
+                        <el-option label="328" value="03028"></el-option>
+                        <el-option label="329" value="03029"></el-option>
+                        <el-option label="330" value="03030"></el-option>
+                        <el-option label="331" value="03031"></el-option>
+                        <el-option label="332" value="03032"></el-option>
+                        <el-option label="333" value="03033"></el-option>
+                        <el-option label="334" value="03034"></el-option>
+                        <el-option label="335" value="03035"></el-option>
+                        <el-option label="336" value="03036"></el-option>
+                        <el-option label="337" value="03037"></el-option>
+                        <el-option label="338" value="03038"></el-option>
+                        <el-option label="339" value="03039"></el-option>
+                        <el-option label="340" value="03040"></el-option>
+                        <el-option label="341" value="03041"></el-option>
+                        <el-option label="342" value="03042"></el-option>
+                        <el-option label="343" value="03043"></el-option>
+                        <el-option label="344" value="03044"></el-option>
+                        <el-option label="345" value="03045"></el-option>
+                        <el-option label="346" value="03046"></el-option>
+                        <el-option label="347" value="03047"></el-option>
+                        <el-option label="348" value="03048"></el-option>
+                        <el-option label="349" value="03049"></el-option>
+                        <el-option label="350" value="03050"></el-option>
+                        <el-option label="351" value="03051"></el-option>
+                        <el-option label="352" value="03052"></el-option>
+                        <el-option label="353" value="03053"></el-option>
+                        <el-option label="354" value="03054"></el-option>
+                        <el-option label="355" value="03055"></el-option>
+                        <el-option label="356" value="03056"></el-option>
+                        <el-option label="357" value="03057"></el-option>
+                        <el-option label="358" value="03058"></el-option>
+                        <el-option label="359" value="03059"></el-option>
+                        <el-option label="360" value="03060"></el-option>
+                        <el-option label="401" value="04001"></el-option>
+                        <el-option label="402" value="04002"></el-option>
+                        <el-option label="403" value="04003"></el-option>
+                        <el-option label="404" value="04004"></el-option>
+                        <el-option label="405" value="04005"></el-option>
+                        <el-option label="406" value="04006"></el-option>
+                        <el-option label="407" value="04007"></el-option>
+                        <el-option label="408" value="04008"></el-option>
+                        <el-option label="409" value="04009"></el-option>
+                        <el-option label="410" value="04010"></el-option>
+                        <el-option label="411" value="04011"></el-option>
+                        <el-option label="412" value="04012"></el-option>
+                        <el-option label="413" value="04013"></el-option>
+                        <el-option label="414" value="04014"></el-option>
+                        <el-option label="415" value="04015"></el-option>
+                        <el-option label="416" value="04016"></el-option>
+                        <el-option label="417" value="04017"></el-option>
+                        <el-option label="418" value="04018"></el-option>
+                        <el-option label="419" value="04019"></el-option>
+                        <el-option label="420" value="04020"></el-option>
+                        <el-option label="421" value="04021"></el-option>
+                        <el-option label="422" value="04022"></el-option>
+                        <el-option label="423" value="04023"></el-option>
+                        <el-option label="424" value="04024"></el-option>
+                        <el-option label="425" value="04025"></el-option>
+                        <el-option label="426" value="04026"></el-option>
+                        <el-option label="427" value="04027"></el-option>
+                        <el-option label="428" value="04028"></el-option>
+                        <el-option label="429" value="04029"></el-option>
+                        <el-option label="430" value="04030"></el-option>
+                        <el-option label="431" value="04031"></el-option>
+                        <el-option label="432" value="04032"></el-option>
+                        <el-option label="433" value="04033"></el-option>
+                        <el-option label="434" value="04034"></el-option>
+                        <el-option label="435" value="04035"></el-option>
+                        <el-option label="436" value="04036"></el-option>
+                        <el-option label="437" value="04037"></el-option>
+                        <el-option label="438" value="04038"></el-option>
+                        <el-option label="439" value="04039"></el-option>
+                        <el-option label="440" value="04040"></el-option>
+                        <el-option label="441" value="04041"></el-option>
+                        <el-option label="442" value="04042"></el-option>
+                        <el-option label="443" value="04043"></el-option>
+                        <el-option label="444" value="04044"></el-option>
+                        <el-option label="445" value="04045"></el-option>
+                        <el-option label="446" value="04046"></el-option>
+                        <el-option label="447" value="04047"></el-option>
+                        <el-option label="448" value="04048"></el-option>
+                        <el-option label="449" value="04049"></el-option>
+                        <el-option label="450" value="04050"></el-option>
+                        <el-option label="451" value="04051"></el-option>
+                        <el-option label="452" value="04052"></el-option>
+                        <el-option label="453" value="04053"></el-option>
+                        <el-option label="454" value="04054"></el-option>
+                        <el-option label="455" value="04055"></el-option>
+                        <el-option label="456" value="04056"></el-option>
+                        <el-option label="457" value="04057"></el-option>
+                        <el-option label="458" value="04058"></el-option>
+                        <el-option label="459" value="04059"></el-option>
+                        <el-option label="460" value="04060"></el-option>
+                        <el-option label="501" value="05001"></el-option>
+                        <el-option label="502" value="05002"></el-option>
+                        <el-option label="503" value="05003"></el-option>
+                        <el-option label="504" value="05004"></el-option>
+                        <el-option label="505" value="05005"></el-option>
+                        <el-option label="506" value="05006"></el-option>
+                        <el-option label="507" value="05007"></el-option>
+                        <el-option label="508" value="05008"></el-option>
+                        <el-option label="509" value="05009"></el-option>
+                        <el-option label="510" value="05010"></el-option>
+                        <el-option label="511" value="05011"></el-option>
+                        <el-option label="512" value="05012"></el-option>
+                        <el-option label="513" value="05013"></el-option>
+                        <el-option label="514" value="05014"></el-option>
+                        <el-option label="515" value="05015"></el-option>
+                        <el-option label="516" value="05016"></el-option>
+                        <el-option label="517" value="05017"></el-option>
+                        <el-option label="518" value="05018"></el-option>
+                        <el-option label="519" value="05019"></el-option>
+                        <el-option label="520" value="05020"></el-option>
+                        <el-option label="521" value="05021"></el-option>
+                        <el-option label="522" value="05022"></el-option>
+                        <el-option label="523" value="05023"></el-option>
+                        <el-option label="524" value="05024"></el-option>
+                        <el-option label="525" value="05025"></el-option>
+                        <el-option label="526" value="05026"></el-option>
+                        <el-option label="527" value="05027"></el-option>
+                        <el-option label="528" value="05028"></el-option>
+                        <el-option label="529" value="05029"></el-option>
+                        <el-option label="530" value="05030"></el-option>
+                        <el-option label="531" value="05031"></el-option>
+                        <el-option label="532" value="05032"></el-option>
+                        <el-option label="533" value="05033"></el-option>
+                        <el-option label="534" value="05034"></el-option>
+                        <el-option label="535" value="05035"></el-option>
+                        <el-option label="536" value="05036"></el-option>
+                        <el-option label="537" value="05037"></el-option>
+                        <el-option label="538" value="05038"></el-option>
+                        <el-option label="539" value="05039"></el-option>
+                        <el-option label="540" value="05040"></el-option>
+                        <el-option label="541" value="05041"></el-option>
+                        <el-option label="542" value="05042"></el-option>
+                        <el-option label="543" value="05043"></el-option>
+                        <el-option label="544" value="05044"></el-option>
+                        <el-option label="545" value="05045"></el-option>
+                        <el-option label="546" value="05046"></el-option>
+                        <el-option label="547" value="05047"></el-option>
+                        <el-option label="548" value="05048"></el-option>
+                        <el-option label="549" value="05049"></el-option>
+                        <el-option label="550" value="05050"></el-option>
+                        <el-option label="551" value="05051"></el-option>
+                        <el-option label="552" value="05052"></el-option>
+                        <el-option label="553" value="05053"></el-option>
+                        <el-option label="554" value="05054"></el-option>
+                        <el-option label="555" value="05055"></el-option>
+                        <el-option label="556" value="05056"></el-option>
+                        <el-option label="557" value="05057"></el-option>
+                        <el-option label="558" value="05058"></el-option>
+                        <el-option label="559" value="05059"></el-option>
+                        <el-option label="560" value="05060"></el-option>
+                    </el-select>
+                    <el-select id="pay_type_id" v-model="type_input" placeholder="电费类型" style="width: 180px">
+                        <el-option label="照明电费" value="1"></el-option>
+                        <el-option label="空调电费" value="2"></el-option>
+                    </el-select>
+                </div>
+                <div class="pay_input">
+                    <el-input v-model="paynum" id="paynum" type="number" style="width: 100px" placeholder="金额"></el-input>
+                    <el-button type="primary" style="margin-left: 10px" round @click="submit">充值</el-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getURL() {
+            var campus = document.getElementById("campus_id").value;
+            var building = document.getElementById("building_id").value;
+            var room = document.getElementById("room_id").value;
+            var full_id = building + room;
+            var type_id = document.getElementById("pay_type_id").value;
+            var paycount = document.getElementById("paynum").value;
+            var nowtime = Math.round(new Date());
+            const url = `http://www.sdsddk.sdnu.edu.cn/wxapp/pay?payAmount=${paycount}&tradeNo=${nowtime}&userXq=${campus}&userFj=${full_id}&payType=${type_id}&openId=oVf1Iw9N9eWcc-TXW_Q2KvxdDqZ4&schoolCode=10445`;
+            window.location.href = url;
+        }
+    </script>
+    <script>
+        const { ref } = Vue;
+        const { ElInput, ElMessage, ElSkeleton, ElSteps, ElTag, ElDescriptions } = ElementPlus;
+        const { CircleCloseFilled, Close, Menu } = ElementPlusIconsVue;
+        const errorTip = (content) => {
+            ElMessage.error(content)
+        }
+        const warnTip = (content) => {
+            ElMessage({
+                message: content,
+                type: 'warning',
+            })
+        }
+        const successTip = (content) => {
+            ElMessage({
+                message: content,
+                type: 'success',
+            })
+        }
+
+        const App = {
+            setup() {
+                const active = ref(0)
+                const input = ref('')
+                const campus = ref('')
+                const building = ref('')
+                const room = ref('')
+                const paynum = ref(0.00)
+                const loading = ref(false)
+                const type_input = ref('')
+                window.active = active
+                window.loading = loading
+                window.errorTip = errorTip
+                window.warnTip = warnTip
+                window.successTip = successTip
+                return {
+                    active,
+                    input,
+                    loading,
+                    campus,
+                    building,
+                    room,
+                    paynum,
+                    type_input,
+                    errorTip,
+                    warnTip,
+                    successTip,
+                }
+            },
+            components: { CircleCloseFilled, Close, Menu, ElSkeleton, ElSteps, ElTag, ElDescriptions },
+            methods: {
+                ok() {
+                    makeCard();
+                    document.querySelector('.input-container').style.display = 'none'
+                },
+                submit() {
+                    getURL();
+                }
+            }
+        }
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+
+</html>
