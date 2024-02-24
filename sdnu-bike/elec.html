@@ -416,14 +416,10 @@
     </div>
     <script>
         function getURL() {
-            var campus = document.getElementById("campus_id").value;
-            var building = document.getElementById("building_id").value;
-            var room = document.getElementById("room_id").value;
-            var full_id = building + room;
-            var type_id = document.getElementById("pay_type_id").value;
+            var full_id = building_id.value + room_id.value;
             var paycount = document.getElementById("paynum").value;
             var nowtime = Math.round(new Date());
-            const url = `http://www.sdsddk.sdnu.edu.cn/wxapp/pay?payAmount=${paycount}&tradeNo=${nowtime}&userXq=${campus}&userFj=${full_id}&payType=${type_id}&openId=oVf1Iw9N9eWcc-TXW_Q2KvxdDqZ4&schoolCode=10445`;
+            const url = `http://www.sdsddk.sdnu.edu.cn/wxapp/pay?payAmount=${paycount}&tradeNo=${nowtime}&userXq=${campus_id.value}&userFj=${full_id}&payType=${type_id.value}&openId=oVf1Iw9N9eWcc-TXW_Q2KvxdDqZ4&schoolCode=10445`;
             window.location.href = url;
         }
     </script>
@@ -457,6 +453,10 @@
                 const paynum = ref(0.00)
                 const loading = ref(false)
                 const type_input = ref('')
+                window.campus_id = campus
+                window.building_id = building
+                window.room_id = room
+                window.type_id = type_input
                 window.active = active
                 window.loading = loading
                 window.errorTip = errorTip
